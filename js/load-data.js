@@ -78,10 +78,15 @@ function combineData() {
     });
 
   drawPipe();
+
+  plotByYear('#hs', data['hs']);
+  plotByYear('#bs', data['bs']);
+  plotByYear('#grad', data['ms'].concat(data['phd']));
+  plotByYear('#work', data['job']);
   }
 }
 
-function createPipe() {
+function loadData() {
     var highSchoolFile = "data/ap-scores.csv";
     var collegeFile = "data/bachelors-degrees-by-sex.csv";
     var mastersFile = "data/masters-grads-by-sex.csv";
@@ -97,4 +102,4 @@ function createPipe() {
         .await(combineData());
 }
 
-createPipe();
+loadData();

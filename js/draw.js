@@ -86,3 +86,51 @@ function drawPipe() {
     .attr('stroke', 'black');
 
 }
+
+function plotByYear(canvasId, groupData) {
+  var canvas = d3.select(canvasId);
+  var barHeight = 100;
+
+  var nestedData = d3.nest()
+    .key(function(d) { return d.year; })
+    .rollup(function(leaves) {
+      return {
+        'male': d3.sum(leaves, function(l) {
+          return l.sex == 'M' ? l.count : 0;
+        }),
+        'female': d3.sum(leaves, function(l) {
+          return l.sex == 'F' ? l.count : 0;
+        })
+      }
+    })
+    .entries(groupData);
+
+
+  var years = canvas.selectAll('.year').data(nestedData).enter()
+    .append('g')
+    .attr('transform', function(d,i) { return 'translate('+i * 75+',20)'; });
+
+  years.append('text').text(function(d) { return d.key; });
+  years.append('rect')
+    .attr('x', 0).attr('width', 70)
+    .attr('y', 5)
+    .attr('height', function(d) {
+      return barHeight * d.value.female / (d.value.male+d.value.female);
+    })
+    .attr('fill', 'purple');
+
+    years.append('rect')
+      .attr('x', 0).attr('width', 70)
+      .attr('y', function(d) {
+        return barHeight * d.value.female / (d.value.male+d.value.female);
+      })
+      .attr('height', function(d) {
+        return barHeight * d.value.male / (d.value.male+d.value.female);
+      })
+      .attr('fill', 'green');
+
+    years.append('line')
+      .attr('x1', 0).attr('x2', 70)
+      .attr('y1', barHeight / 2).attr('y2', barHeight / 2)
+      .attr('stroke', 'black');
+}
