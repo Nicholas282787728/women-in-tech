@@ -47,8 +47,9 @@ function combineData() {
       });
     });
 
+    var cleaned_job_data = [];
     raw_job_data.forEach(function(d) {
-      data['job'].push({
+      cleaned_job_data.push({
         year: +d.Year,
         count: parseInt(d.NumEmployed) * 1000,
         occupation: d.Type,
@@ -56,8 +57,24 @@ function combineData() {
       });
     });
 
-    data['job'] = data['job'].filter(function(d) {
+    cleaned_job_data = cleaned_job_data.filter(function(d) {
       return !isNaN(d.pctFemale);
+    });
+
+    // Re-format job data to match others
+    cleaned_job_data.forEach(function(d) {
+      data['job'].push({
+        year: d.year,
+        occupation: d.occupation,
+        sex: 'F',
+        count: Math.ceil(d.count * d.pctFemale)
+      });
+      data['job'].push({
+        year: d.year,
+        occupation: d.occupation,
+        sex: 'M',
+        count: Math.floor(d.count * (1 - d.pctFemale))
+      });
     });
 
   drawPipe();
