@@ -92,7 +92,7 @@ function plotByYear(canvasId, groupData) {
   var barHeight = 100;
 
   var nestedData = d3.nest()
-    .key(function(d) { return d.year; })
+    .key(function(d) { return d.year; }).sortKeys(d3.ascending)
     .rollup(function(leaves) {
       return {
         'male': d3.sum(leaves, function(l) {
@@ -130,6 +130,61 @@ function plotByYear(canvasId, groupData) {
       .attr('fill', 'green');
 
     years.append('line')
+      .attr('x1', 0).attr('x2', 70)
+      .attr('y1', barHeight / 2).attr('y2', barHeight / 2)
+      .attr('stroke', 'black');
+}
+
+function plotByCategory(canvasId, groupData) {
+  var canvas = d3.select(canvasId);
+  var barHeight = 100;
+
+  var category = 'program';
+  if (typeof groupData[0].score !== 'undefined') {
+    category = 'score';
+  } else if (typeof groupData[0].occupation !== 'undefined') {
+    category = 'occupation';
+  }
+
+  var nestedData = d3.nest()
+    .key(function(d) { return d[category]; }).sortKeys(d3.ascending)
+    .rollup(function(leaves) {
+      return {
+        'male': d3.sum(leaves, function(l) {
+          return l.sex == 'M' ? l.count : 0;
+        }),
+        'female': d3.sum(leaves, function(l) {
+          return l.sex == 'F' ? l.count : 0;
+        })
+      }
+    })
+    .entries(groupData);
+
+
+  var categories = canvas.selectAll('.categories').data(nestedData).enter()
+    .append('g')
+    .attr('transform', function(d,i) { return 'translate('+i * 75+',20)'; });
+
+  categories.append('text').text(function(d) { return d.key.substring(0,9); });
+  categories.append('rect')
+    .attr('x', 0).attr('width', 70)
+    .attr('y', 5)
+    .attr('height', function(d) {
+      return barHeight * d.value.female / (d.value.male+d.value.female);
+    })
+    .attr('fill', 'purple');
+
+    categories.append('rect')
+      .attr('x', 0).attr('width', 70)
+      .attr('y', function(d) {
+        return barHeight * d.value.female / (d.value.male+d.value.female);
+      })
+      .attr('height', function(d) {
+        return barHeight * d.value.male / (d.value.male+d.value.female);
+      })
+      .attr('fill', 'green');
+
+    categories.append('line')
       .attr('x1', 0).attr('x2', 70)
       .attr('y1', barHeight / 2).attr('y2', barHeight / 2)
       .attr('stroke', 'black');
