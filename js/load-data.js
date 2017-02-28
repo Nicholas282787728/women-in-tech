@@ -78,16 +78,6 @@ function combineData() {
     });
 
   drawPipe();
-
-  plotByYear('#hs', data['hs']);
-  plotByCategory('#hs-cat', data['hs']);
-  plotByYear('#bs', data['bs']);
-  plotByCategory('#bs-cat', data['bs']);
-  plotByYear('#grad', data['ms'].concat(data['phd']));
-  plotByCategory('#ms-cat', data['ms']);
-  plotByCategory('#phd-cat', data['phd']);
-  plotByYear('#work', data['job']);
-  plotByCategory('#work-cat', data['job']);
   }
 }
 

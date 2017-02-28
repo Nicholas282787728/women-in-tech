@@ -3,7 +3,9 @@ function drawPipe() {
   // Save total counts by sex for each education/career stage
   var overviewData = [];
   overviewData.push({
-    'key': 'High School',
+    'id': 'hs',
+    'data': data['hs'],
+    'label': 'High School',
     'description': 'AP Test Takers',
     'male': d3.sum(data['hs'], function(s) {
       return s.sex == 'M' ? s.count : 0;
@@ -14,7 +16,9 @@ function drawPipe() {
   });
 
   overviewData.push({
-    'key': 'College',
+    'id': 'bs',
+    'data': data['bs'],
+    'label': 'College',
     'description': 'Graduates',
     'male': d3.sum(data['bs'], function(s) {
       return s.sex == 'M' ? s.count : 0;
@@ -25,7 +29,9 @@ function drawPipe() {
   });
 
   overviewData.push({
-    'key': 'Graduate School',
+    'id': 'grad',
+    'data': data['ms'].concat(data['phd']),
+    'label': 'Graduate School',
     'description': 'Graduates',
     'male': d3.sum(data['ms'].concat(data['phd']), function(s) {
       return s.sex == 'M' ? s.count : 0;
@@ -36,7 +42,9 @@ function drawPipe() {
   });
 
   overviewData.push({
-    'key': 'Workforce',
+    'id': 'work',
+    'data': data['job'],
+    'label': 'Workforce',
     'description': 'Employees',
     'male': d3.sum(data['hs'], function(s) {
       return s.sex == 'M' ? s.count : 0;
@@ -58,7 +66,12 @@ function drawPipe() {
     .attr('transform', function(d,i) {
       return 'translate('+ i * groupWidth +',20)'
     });
-  groups.append('text').text(function(d) { return d.key; });
+
+  groups.on('click', function(d) {
+    console.log('clicked on '+ d.id);
+    plotByYear(d.id, d.data);
+  });
+  groups.append('text').text(function(d) { return d.label; });
 
   groups.append('rect')
     .attr('height', function(d) {
@@ -88,7 +101,7 @@ function drawPipe() {
 }
 
 function plotByYear(canvasId, groupData) {
-  var canvas = d3.select(canvasId);
+  var canvas = d3.select('#'+canvasId);
   var barHeight = 100;
 
   var nestedData = d3.nest()
@@ -165,7 +178,7 @@ function plotByCategory(canvasId, groupData) {
     .append('g')
     .attr('transform', function(d,i) { return 'translate('+i * 75+',20)'; });
 
-  categories.append('text').text(function(d) { return d.key.substring(0,9); });
+  categories.append('text').text(function(d) { return d.label.substring(0,9); });
   categories.append('rect')
     .attr('x', 0).attr('width', 70)
     .attr('y', 5)
