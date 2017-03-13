@@ -68,8 +68,8 @@ function drawPipe() {
     });
 
   groups.on('click', function(d) {
-    console.log('clicked on '+ d.id);
     plotByYear(d.id, d.data);
+    plotByCategory(d.id+'-cat', d.data);
   });
   groups.append('text').text(function(d) { return d.label; });
 
@@ -149,7 +149,7 @@ function plotByYear(canvasId, groupData) {
 }
 
 function plotByCategory(canvasId, groupData) {
-  var canvas = d3.select(canvasId);
+  var canvas = d3.select('#'+canvasId);
   var barHeight = 100;
 
   var category = 'program';
@@ -173,12 +173,14 @@ function plotByCategory(canvasId, groupData) {
     })
     .entries(groupData);
 
+  console.log(nestedData);
+
 
   var categories = canvas.selectAll('.categories').data(nestedData).enter()
     .append('g')
     .attr('transform', function(d,i) { return 'translate('+i * 75+',20)'; });
 
-  categories.append('text').text(function(d) { return d.label.substring(0,9); });
+  categories.append('text').text(function(d) { return d.key.substring(0,9); });
   categories.append('rect')
     .attr('x', 0).attr('width', 70)
     .attr('y', 5)
