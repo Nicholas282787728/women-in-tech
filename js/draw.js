@@ -55,10 +55,14 @@ function drawPipe() {
   });
 
   // Set canvas variables
-  var canvas = d3.select('#overview');
+  var canvas = d3.select('#overview').append('svg')
+    .attr('viewBox', '0, 0, 600, 100')
+    .attr('preserveAspectRatio', 'xMinYMin meet')
+    .classed("svg-content", true);
   var groupWidth = 150;
-  var gutterWidth = 5;
+  var gutterWidth = 1;
   var pipeHeight = 75;
+
 
   // Create pipe segments for each group
   var groups = canvas.selectAll('.box').data(overviewData).enter()
@@ -67,20 +71,28 @@ function drawPipe() {
       return 'translate('+ i * groupWidth +',20)'
     });
 
+  // Add click handler
   groups.on('click', function(d) {
     plotByYear(d.id, d.data);
     plotByCategory(d.id+'-cat', d.data);
   });
-  groups.append('text').text(function(d) { return d.label; });
 
+  // Add top label
+  groups.append('text').text(function(d) { return d.label; })
+    .attr('text-anchor', 'middle')
+    .attr('x', groupWidth / 2)
+    .attr('y', -5);
+
+  // Add female pipe segment
   groups.append('rect')
     .attr('height', function(d) {
       return pipeHeight * d.female / (d.male + d.female);
     })
     .attr('width', groupWidth - gutterWidth)
     .attr('y', gutterWidth)
-    .attr('fill', 'purple');
+    .attr('class', 'female');
 
+  // Add male pipe segment
   groups.append('rect')
     .attr('y', function(d) {
       return gutterWidth + pipeHeight * d.female / (d.male + d.female);
@@ -89,8 +101,9 @@ function drawPipe() {
     .attr('height', function(d) {
       return pipeHeight * d.male / (d.male + d.female);
     })
-    .attr('fill', 'green');
+    .attr('class', 'male');
 
+  // Add 50% line
   groups.append('line')
     .attr('x1', 0)
     .attr('x2', groupWidth)
@@ -130,7 +143,7 @@ function plotByYear(canvasId, groupData) {
     .attr('height', function(d) {
       return barHeight * d.value.female / (d.value.male+d.value.female);
     })
-    .attr('fill', 'purple');
+    .attr('class', 'female');
 
     years.append('rect')
       .attr('x', 0).attr('width', 70)
@@ -140,7 +153,7 @@ function plotByYear(canvasId, groupData) {
       .attr('height', function(d) {
         return barHeight * d.value.male / (d.value.male+d.value.female);
       })
-      .attr('fill', 'green');
+      .attr('class', 'male');
 
     years.append('line')
       .attr('x1', 0).attr('x2', 70)
@@ -173,9 +186,6 @@ function plotByCategory(canvasId, groupData) {
     })
     .entries(groupData);
 
-  console.log(nestedData);
-
-
   var categories = canvas.selectAll('.categories').data(nestedData).enter()
     .append('g')
     .attr('transform', function(d,i) { return 'translate('+i * 75+',20)'; });
@@ -187,7 +197,7 @@ function plotByCategory(canvasId, groupData) {
     .attr('height', function(d) {
       return barHeight * d.value.female / (d.value.male+d.value.female);
     })
-    .attr('fill', 'purple');
+    .attr('class', 'female');
 
     categories.append('rect')
       .attr('x', 0).attr('width', 70)
@@ -197,7 +207,7 @@ function plotByCategory(canvasId, groupData) {
       .attr('height', function(d) {
         return barHeight * d.value.male / (d.value.male+d.value.female);
       })
-      .attr('fill', 'green');
+      .attr('class', 'male');
 
     categories.append('line')
       .attr('x1', 0).attr('x2', 70)
