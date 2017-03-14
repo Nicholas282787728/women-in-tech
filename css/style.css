@@ -1,0 +1,33 @@
+:root{
+  --font-color: black;
+  --bg-color: white;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--font-color);
+  font-family: 'Fira Sans', sans-serif;
+  fill: var(--font-color);
+  text-align: center;
+}
+
+.male { fill: rgb(22, 183, 199); }
+.female { fill: rgb(142, 99, 182); }
+
+
+#overview { width: 80%; }
+
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 15%;
+    vertical-align: top;
+    overflow: hidden;
+}
+.svg-content {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
