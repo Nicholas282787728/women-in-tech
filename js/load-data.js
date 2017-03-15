@@ -78,10 +78,18 @@ function combineData() {
     });
 
   drawPipe();
+  plotByCategory('hs-group', data['hs'], 500, 150);
+  plotByYear('hs-year', data['hs']);
+  plotByCategory('bs-group', data['bs'], 500, 150);
+  plotByYear('bs-year', data['bs']);
+  plotByCategory('grad-group', data['ms'], 500, 150);
+  plotByYear('grad-year', data['ms'].concat(data['phd']));
+  plotByCategory('work-group', data['job'], 500, 150);
+  plotByYear('work-year', data['job']);
   }
 }
 
-function createPipe() {
+function loadData() {
     var highSchoolFile = "data/ap-scores.csv";
     var collegeFile = "data/bachelors-degrees-by-sex.csv";
     var mastersFile = "data/masters-grads-by-sex.csv";
@@ -97,4 +105,4 @@ function createPipe() {
         .await(combineData());
 }
 
-createPipe();
+loadData();
