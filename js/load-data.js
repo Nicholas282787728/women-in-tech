@@ -82,7 +82,7 @@ function combineData() {
   plotByYear('hs-year', data['hs']);
   plotByCategory('bs-group', data['bs'], 500, 150);
   plotByYear('bs-year', data['bs']);
-  plotByCategory('grad-group', data['ms'], 500, 150);
+  plotByCategory('grad-group', data['ms'].concat(data['phd']), 500, 150);
   plotByYear('grad-year', data['ms'].concat(data['phd']));
   plotByCategory('work-group', data['job'], 500, 150);
   plotByYear('work-year', data['job']);
