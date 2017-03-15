@@ -18,6 +18,9 @@ html {
 * + section * {
   margin-top: 1em;
 }
+.flex-container * + * {
+  margin-left: 1em;
+}
 
 body {
   background-color: var(--bg-color);
@@ -69,6 +72,7 @@ h1 {
 
 .male { fill: rgb(22, 183, 199); }
 .female { fill: rgb(142, 99, 182); }
+.bar { stroke: black; }
 
 .small-label { font-size: 0.7em; }
 
@@ -86,4 +90,7 @@ h1 {
     position: absolute;
     top: 0;
     left: 0;
+    margin: 0;
 }
+
+.flex-container { display: flex; }

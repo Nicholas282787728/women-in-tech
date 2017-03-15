@@ -152,12 +152,9 @@ function drawPipe() {
 
 }
 
-function plotByYear(canvasId, groupData) {
-  var canvas = d3.select('#'+canvasId);
-  var barHeight = 100;
-
+function plotByYear(canvasId, groupData, graphWidth=600, graphHeight=400) {
   var nestedData = d3.nest()
-    .key(function(d) { return d.year; }).sortKeys(d3.ascending)
+    .key(function(d) { return d.year; }).sortKeys(d3.descending)
     .rollup(function(leaves) {
       return {
         'male': d3.sum(leaves, function(l) {
@@ -170,40 +167,68 @@ function plotByYear(canvasId, groupData) {
     })
     .entries(groupData);
 
+  var canvas = d3.select('#'+canvasId);
+  var svg = canvas.append('svg')
+    .attr('viewBox', '0 0 '+ graphWidth +' '+ graphHeight)
+    .attr('preserveAspectRatio', 'xMinYMin meet')
+    .classed('svg-content', 'true');
+  var barHeight = graphHeight / nestedData.length;
 
-  var years = canvas.selectAll('.year').data(nestedData).enter()
+  var years = svg.selectAll('.year').data(nestedData).enter()
     .append('g')
-    .attr('transform', function(d,i) { return 'translate('+i * 75+',20)'; });
+    .classed('year', 'true')
+    .attr('transform', function(d,i) { return 'translate(0, '+i * barHeight+')'; });
 
-  years.append('text').text(function(d) { return d.key; });
+  // Add female bar
   years.append('rect')
-    .attr('x', 0).attr('width', 70)
-    .attr('y', 5)
-    .attr('height', function(d) {
-      return barHeight * d.value.female / (d.value.male+d.value.female);
+    .attr('x', 0)
+    .attr('width', function(d) {
+      return graphWidth * d.value.female / (d.value.male + d.value.female);
     })
-    .attr('class', 'female');
+    .attr('y', 0)
+    .attr('height', barHeight)
+    .attr('class', 'female bar');
 
-    years.append('rect')
-      .attr('x', 0).attr('width', 70)
-      .attr('y', function(d) {
-        return barHeight * d.value.female / (d.value.male+d.value.female);
-      })
-      .attr('height', function(d) {
-        return barHeight * d.value.male / (d.value.male+d.value.female);
-      })
-      .attr('class', 'male');
+  // Add male bar
+  years.append('rect')
+    .attr('x', function(d) {
+      return graphWidth * d.value.female / (d.value.male + d.value.female);
+    })
+    .attr('width', function(d) {
+      return graphWidth * d.value.male / (d.value.male + d.value.female);
+    })
+    .attr('y', 0)
+    .attr('height', barHeight)
+    .attr('class', 'male bar');
 
-    years.append('line')
-      .attr('x1', 0).attr('x2', 70)
-      .attr('y1', barHeight / 2).attr('y2', barHeight / 2)
-      .attr('stroke', 'black');
+  // years.append('text').text(function(d) { return d.key; });
+  // years.append('rect')
+  //   .attr('x', 0).attr('width', 70)
+  //   .attr('y', 5)
+  //   .attr('height', function(d) {
+  //     return barHeight * d.value.female / (d.value.male+d.value.female);
+  //   })
+  //   .attr('class', 'female');
+  //
+  //   years.append('rect')
+  //     .attr('x', 0).attr('width', 70)
+  //     .attr('y', function(d) {
+  //       return barHeight * d.value.female / (d.value.male+d.value.female);
+  //     })
+  //     .attr('height', function(d) {
+  //       return barHeight * d.value.male / (d.value.male+d.value.female);
+  //     })
+  //     .attr('class', 'male');
+  //
+  //   years.append('line')
+  //     .attr('x1', 0).attr('x2', 70)
+  //     .attr('y1', barHeight / 2).attr('y2', barHeight / 2)
+  //     .attr('stroke', 'black');
 }
 
-function plotByCategory(canvasId, groupData) {
-  var canvas = d3.select('#'+canvasId);
-  var barHeight = 100;
+function plotByCategory(canvasId, groupData, graphWidth, graphHeight=100) {
 
+  // Select correct category variable
   var category = 'program';
   if (typeof groupData[0].score !== 'undefined') {
     category = 'score';
@@ -211,6 +236,7 @@ function plotByCategory(canvasId, groupData) {
     category = 'occupation';
   }
 
+  // Nest data
   var nestedData = d3.nest()
     .key(function(d) { return d[category]; }).sortKeys(d3.ascending)
     .rollup(function(leaves) {
@@ -225,31 +251,50 @@ function plotByCategory(canvasId, groupData) {
     })
     .entries(groupData);
 
-  var categories = canvas.selectAll('.categories').data(nestedData).enter()
+  // Set up canvas variables
+  var canvas = d3.select('#'+canvasId);
+  var svg = canvas.append('svg')
+    .attr('viewBox', '0 0 '+graphWidth+' '+ graphHeight)
+    .classed('svg-content', 'true');
+  var barWidth = graphWidth / (nestedData.length * 2),
+      gutter = 4;
+
+  // Create Y scale
+  var maxValue = d3.max(nestedData, function(d) {
+    return d3.max([d.value.female, d.value.male]);
+  });
+  var scaleY = d3.scaleLinear().domain([0, maxValue]).nice()
+    .range([0, graphHeight*0.9]);
+
+  // Create category groups
+  var categories = svg.selectAll('.categories').data(nestedData).enter()
     .append('g')
-    .attr('transform', function(d,i) { return 'translate('+i * 75+',20)'; });
+    .classed('categories', 'true')
+    .attr('transform', function(d,i) {
+      return 'translate('+ ((i * barWidth * 2) + (gutter / 2)) +')';
+    });
 
-  categories.append('text').text(function(d) { return d.key.substring(0,9); });
+  // Add score label
+  categories.append('text').text(function(d) { return d.key.substring(0,9); })
+    .attr('x', barWidth - gutter)
+    .attr('y', graphHeight)
+    .attr('text-anchor', 'middle');
+
+  // Add female bar
   categories.append('rect')
-    .attr('x', 0).attr('width', 70)
-    .attr('y', 5)
-    .attr('height', function(d) {
-      return barHeight * d.value.female / (d.value.male+d.value.female);
-    })
-    .attr('class', 'female');
+    .attr('x', 0).attr('width', barWidth - gutter/2)
+    .attr('y', function(d) { return graphHeight - scaleY(d.value.female); })
+    .attr('height', function(d) { return scaleY(d.value.female); })
+    .attr('class', 'female bar');
 
-    categories.append('rect')
-      .attr('x', 0).attr('width', 70)
-      .attr('y', function(d) {
-        return barHeight * d.value.female / (d.value.male+d.value.female);
-      })
-      .attr('height', function(d) {
-        return barHeight * d.value.male / (d.value.male+d.value.female);
-      })
-      .attr('class', 'male');
-
-    categories.append('line')
-      .attr('x1', 0).attr('x2', 70)
-      .attr('y1', barHeight / 2).attr('y2', barHeight / 2)
-      .attr('stroke', 'black');
+  categories.append('rect')
+    .attr('x', barWidth - gutter/2).attr('width', barWidth - gutter/2)
+    .attr('y', function(d) { return graphHeight - scaleY(d.value.male); })
+    .attr('height', function(d) { return scaleY(d.value.male); })
+    .attr('class', 'male bar');
+  //
+  //   categories.append('line')
+  //     .attr('x1', 0).attr('x2', barWidth)
+  //     .attr('y1', graphHeight / 2).attr('y2', graphHeight / 2)
+  //     .attr('stroke', 'black');
 }
