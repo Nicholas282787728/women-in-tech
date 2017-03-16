@@ -107,3 +107,5 @@ h1 {
 
 .line-primary { stroke: var(--font-color); }
 .line-secondary { stroke: var(--font-secondary); }
+.line-highlight { stroke: yellow; }
+.label-highlight { fill: blue; }

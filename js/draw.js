@@ -217,8 +217,8 @@ function plotByYear(canvasId, groupData, options={}) {
     })
     .attr('y', 0)
     .attr('height', barHeight)
-    .attr('class', 'female bar')
-    .on('mouseover', function(d) { console.log(canvasId); });
+    .attr('id', function(d) { return canvasId+'-'+d.key+'-f'; })
+    .classed('female', true).classed('bar', true);
 
   // Add male bars
   years.append('rect')
@@ -230,7 +230,8 @@ function plotByYear(canvasId, groupData, options={}) {
     })
     .attr('y', 0)
     .attr('height', barHeight)
-    .attr('class', 'male bar');
+    .attr('id', function(d) { return this.canvasId+'-'+d.key+'-m'; })
+    .classed('male', true).classed('bar', true);
 
   // Add year labels
   years.append('text').text(function(d) { return d.key; })
@@ -248,28 +249,6 @@ function plotByYear(canvasId, groupData, options={}) {
     .attr('x', options.marginLeft + 0.5 * graphWallWidth + 2)
     .attr('y', options.graphHeight - 0.6 * options.marginBottom);
 
-  // 25% (secondary)
-  svg.append('line')
-    .attr('x1', options.marginLeft + 0.25 * graphWallWidth)
-    .attr('x2', options.marginLeft + 0.25 * graphWallWidth)
-    .attr('y1', 0.5 * options.marginTop)
-    .attr('y2', options.marginTop + graphWallHeight + 0.1 * options.marginBottom)
-    .classed('line-secondary', true);
-  svg.append('text').text('25%').attr('text-anchor', 'middle')
-    .attr('x', options.marginLeft + 0.25 * graphWallWidth + 2)
-    .attr('y', options.graphHeight - 0.6 * options.marginBottom);
-
-  // 75% (secondary)
-  svg.append('line')
-    .attr('x1', options.marginLeft + 0.75 * graphWallWidth)
-    .attr('x2', options.marginLeft + 0.75 * graphWallWidth)
-    .attr('y1', 0.5 * options.marginTop)
-    .attr('y2', options.marginTop + graphWallHeight + 0.1 * options.marginBottom)
-    .classed('line-secondary', true);
-  svg.append('text').text('75%').attr('text-anchor', 'middle')
-    .attr('x', options.marginLeft + 0.75 * graphWallWidth + 2)
-    .attr('y', options.graphHeight - 0.6 * options.marginBottom);
-
   // 0% (label only)
   svg.append('text').text('0%').attr('text-anchor', 'middle')
     .attr('x', options.marginLeft + 2)
@@ -280,30 +259,25 @@ function plotByYear(canvasId, groupData, options={}) {
     .attr('x', options.graphWidth - options.marginRight + 2)
     .attr('y', options.graphHeight - 0.6 * options.marginBottom);
 
-
-  // years.append('text').text(function(d) { return d.key; });
-  // years.append('rect')
-  //   .attr('x', 0).attr('width', 70)
-  //   .attr('y', 5)
-  //   .attr('height', function(d) {
-  //     return barHeight * d.value.female / (d.value.male+d.value.female);
-  //   })
-  //   .attr('class', 'female');
-  //
-  //   years.append('rect')
-  //     .attr('x', 0).attr('width', 70)
-  //     .attr('y', function(d) {
-  //       return barHeight * d.value.female / (d.value.male+d.value.female);
-  //     })
-  //     .attr('height', function(d) {
-  //       return barHeight * d.value.male / (d.value.male+d.value.female);
-  //     })
-  //     .attr('class', 'male');
-  //
-  //   years.append('line')
-  //     .attr('x1', 0).attr('x2', 70)
-  //     .attr('y1', barHeight / 2).attr('y2', barHeight / 2)
-  //     .attr('stroke', 'black');
+  // Add hover handler
+  var bars = svg.selectAll('.bar')
+    .on('mouseover', function(d) {
+      svg.append('line')
+        .attr('x1', options.marginLeft + scaleWidth(d.value.female / (d.value.female + d.value.male)))
+        .attr('x2', options.marginLeft + scaleWidth(d.value.female / (d.value.female + d.value.male)))
+        .attr('y1', 0.5 * options.marginTop)
+        .attr('y2', options.marginTop + graphWallHeight + 0.1 * options.marginBottom)
+        .classed('line-highlight', true);
+      svg.append('text').attr('text-anchor', 'middle')
+        .text(Math.floor(10000 * d.value.female / (d.value.female + d.value.male))/100 +'%')
+        .attr('x', options.marginLeft + scaleWidth(d.value.female / (d.value.female + d.value.male)))
+        .attr('y', options.graphHeight - 0.6 * options.marginBottom)
+        .classed('label-highlight', true);
+    })
+    .on('mouseout', function(d) {
+      svg.selectAll('.line-highlight').remove();
+      svg.selectAll('.label-highlight').remove();
+    });
 }
 
 function plotByCategory(canvasId, groupData, graphWidth, graphHeight=100) {
