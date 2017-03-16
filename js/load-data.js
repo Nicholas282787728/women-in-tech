@@ -79,7 +79,7 @@ function combineData() {
 
   drawPipe();
   plotByCategory('hs-group', data['hs'], 500, 150);
-  plotByYear('hs-year', data['hs']);
+  plotByYear('hs-year', data['hs'], {'graphWidth': 600, 'graphHeight': 400});
   plotByCategory('bs-group', data['bs'], 500, 150);
   plotByYear('bs-year', data['bs']);
   plotByCategory('grad-group', data['ms'].concat(data['phd']), 500, 150);

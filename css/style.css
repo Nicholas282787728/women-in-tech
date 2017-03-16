@@ -1,5 +1,6 @@
 :root{
-  --font-color: black;
+  --font-color: rgb(35, 35, 35);
+  --font-secondary: rgb(84, 84, 84);
   --bg-color: white;
 }
 
@@ -32,18 +33,21 @@ body {
 section {
   width: 80%;
   margin: auto;
-  min-height: 100vh;
+  padding-top: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
+section + section { padding-top: 50vh; }
 section > div {
   flex: 1;
  }
 
 nav {
   position: fixed;
+  top: 0;
+  left: 0;
   background-color: var(--font-color);
   color: var(--bg-color);
   min-height: 8vh;
@@ -64,6 +68,11 @@ nav ul {
 nav li {
   padding: 0 0.5em;
 }
+a, a:visited {
+  color: var(--bg-color);
+  text-decoration: none;
+}
+a:hover { color: rgb(142, 99, 182); }
 
 h1 {
   font-size: 3em;
@@ -94,3 +103,7 @@ h1 {
 }
 
 .flex-container { display: flex; }
+
+
+.line-primary { stroke: var(--font-color); }
+.line-secondary { stroke: var(--font-secondary); }
