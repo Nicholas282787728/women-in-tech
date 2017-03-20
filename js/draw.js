@@ -164,6 +164,11 @@ function plotByYear(canvasId, groupData, options={}) {
     })
     .entries(groupData);
 
+  var yearCount = function(d) { return d.value.female + d.value.male; };
+  var totalCount = nestedData.reduce(function(total, d) {
+    return total + yearCount(d);
+  }, 0);
+
   // Set graph options
   var defaults = {
     'graphWidth': 600,
@@ -171,7 +176,7 @@ function plotByYear(canvasId, groupData, options={}) {
     'marginLeft': 50,
     'marginRight': 50,
     'marginTop': 10,
-    'marginBottom': 50,
+    'marginBottom': 50
   }
   for (option in defaults) {
     if (!options[option]) {
@@ -180,7 +185,7 @@ function plotByYear(canvasId, groupData, options={}) {
   }
 
   var graphWallWidth = options.graphWidth - options.marginLeft - options.marginRight;
-  var graphWallHeight = options.graphHeight - options.marginTop - options.marginBottom
+  var graphWallHeight = options.graphHeight - options.marginTop - options.marginBottom;
 
   // Create width & height scales
   var scaleWidth = function(rawValue) { return rawValue * graphWallWidth; },
@@ -191,7 +196,7 @@ function plotByYear(canvasId, groupData, options={}) {
     .attr('viewBox', '0 0 '+ options.graphWidth +' '+ options.graphHeight)
     .attr('preserveAspectRatio', 'xMinYMin meet')
     .classed('svg-content', 'true');
-  var barHeight = graphWallHeight / nestedData.length;
+  var barHeight = scaleHeight(1 / nestedData.length);
 
   // Add labels
   svg.append('line')
@@ -213,7 +218,7 @@ function plotByYear(canvasId, groupData, options={}) {
   years.append('rect')
     .attr('x', options.marginLeft)
     .attr('width', function(d) {
-      return scaleWidth(d.value.female / (d.value.male + d.value.female));
+      return scaleWidth(d.value.female / yearCount(d));
     })
     .attr('y', 0)
     .attr('height', barHeight)
@@ -223,10 +228,10 @@ function plotByYear(canvasId, groupData, options={}) {
   // Add male bars
   years.append('rect')
     .attr('x', function(d) {
-      return options.marginLeft + scaleWidth(d.value.female / (d.value.male + d.value.female));
+      return options.marginLeft + scaleWidth(d.value.female / yearCount(d));
     })
     .attr('width', function(d) {
-      return scaleWidth(d.value.male / (d.value.male + d.value.female));
+      return scaleWidth(d.value.male / yearCount(d));
     })
     .attr('y', 0)
     .attr('height', barHeight)
@@ -263,14 +268,14 @@ function plotByYear(canvasId, groupData, options={}) {
   var bars = svg.selectAll('.bar')
     .on('mouseover', function(d) {
       svg.append('line')
-        .attr('x1', options.marginLeft + scaleWidth(d.value.female / (d.value.female + d.value.male)))
-        .attr('x2', options.marginLeft + scaleWidth(d.value.female / (d.value.female + d.value.male)))
+        .attr('x1', options.marginLeft + scaleWidth(d.value.female / yearCount(d)))
+        .attr('x2', options.marginLeft + scaleWidth(d.value.female / yearCount(d)))
         .attr('y1', 0.5 * options.marginTop)
         .attr('y2', options.marginTop + graphWallHeight + 0.1 * options.marginBottom)
         .classed('line-highlight', true);
       svg.append('text').attr('text-anchor', 'middle')
-        .text(Math.floor(10000 * d.value.female / (d.value.female + d.value.male))/100 +'%')
-        .attr('x', options.marginLeft + scaleWidth(d.value.female / (d.value.female + d.value.male)))
+        .text(Math.floor(10000 * d.value.female / yearCount(d))/100 +'%')
+        .attr('x', options.marginLeft + scaleWidth(d.value.female / yearCount(d)))
         .attr('y', options.graphHeight - 0.6 * options.marginBottom)
         .classed('label-highlight', true);
     })
@@ -280,75 +285,156 @@ function plotByYear(canvasId, groupData, options={}) {
     });
 }
 
-function plotByCategory(canvasId, groupData, graphWidth, graphHeight=100) {
+function plotByCategory(canvasId, groupData, options={}) {
 
-  // Select correct category variable
-  var category = 'program';
-  if (typeof groupData[0].score !== 'undefined') {
-    category = 'score';
-  } else if (typeof groupData[0].occupation !== 'undefined') {
-    category = 'occupation';
+    // Select correct category variable
+    var category = 'program';
+    if (typeof groupData[0].score !== 'undefined') {
+      category = 'score';
+    } else if (typeof groupData[0].occupation !== 'undefined') {
+      category = 'occupation';
+    }
+
+    // Nest data
+    var nestedData = d3.nest()
+      .key(function(d) { return d[category]; }).sortKeys(d3.ascending)
+      .rollup(function(leaves) {
+        return {
+          'male': d3.sum(leaves, function(l) {
+            return l.sex == 'M' ? l.count : 0;
+          }),
+          'female': d3.sum(leaves, function(l) {
+            return l.sex == 'F' ? l.count : 0;
+          })
+        }
+      })
+      .entries(groupData);
+
+  // Set graph options
+  var defaults = {
+    'graphWidth': 600,
+    'graphHeight': 100,
+    'marginLeft': 50,
+    'marginRight': 50,
+    'marginTop': 10,
+    'marginBottom': 15,
+    'gutter': 4
+  }
+  for (option in defaults) {
+    if (!options[option]) {
+      options[option] = defaults[option];
+    }
   }
 
-  // Nest data
-  var nestedData = d3.nest()
-    .key(function(d) { return d[category]; }).sortKeys(d3.ascending)
-    .rollup(function(leaves) {
-      return {
-        'male': d3.sum(leaves, function(l) {
-          return l.sex == 'M' ? l.count : 0;
-        }),
-        'female': d3.sum(leaves, function(l) {
-          return l.sex == 'F' ? l.count : 0;
-        })
-      }
-    })
-    .entries(groupData);
+  var graphWallWidth = options.graphWidth - options.marginLeft - options.marginRight;
+  var graphWallHeight = options.graphHeight - options.marginTop - options.marginBottom;
+
+  // Create width & height scales
+  var scaleWidth = function(rawValue) { return rawValue * graphWallWidth; };
+  var translateX = function(i) {
+    return options.marginLeft + (i * barWidth * 2) + (options.gutter * (i+1));
+  }
+  var maxValue = d3.max(nestedData, function(d) {
+    return d3.max([d.value.female, d.value.male]);
+  });
+  var scaleHeight = d3.scaleLinear().domain([0, maxValue]).nice()
+    .range([0, graphWallHeight]);
 
   // Set up canvas variables
   var canvas = d3.select('#'+canvasId);
   var svg = canvas.append('svg')
-    .attr('viewBox', '0 0 '+graphWidth+' '+ graphHeight)
+    .attr('viewBox', '0 0 '+options.graphWidth+' '+ options.graphHeight)
     .classed('svg-content', 'true');
-  var barWidth = graphWidth / (nestedData.length * 2),
-      gutter = 4;
+  var barWidth = (graphWallWidth - (options.gutter * nestedData.length)) /
+                  (nestedData.length * 2);
 
-  // Create Y scale
-  var maxValue = d3.max(nestedData, function(d) {
-    return d3.max([d.value.female, d.value.male]);
-  });
-  var scaleY = d3.scaleLinear().domain([0, maxValue]).nice()
-    .range([0, graphHeight*0.9]);
 
   // Create category groups
   var categories = svg.selectAll('.categories').data(nestedData).enter()
     .append('g')
     .classed('categories', 'true')
-    .attr('transform', function(d,i) {
-      return 'translate('+ ((i * barWidth * 2) + (gutter / 2)) +')';
-    });
+    .attr('transform', function(d,i) { return 'translate('+ translateX(i) +')'; });
 
   // Add score label
   categories.append('text').text(function(d) { return d.key.substring(0,9); })
-    .attr('x', barWidth - gutter)
-    .attr('y', graphHeight)
+    .attr('x', barWidth)
+    .attr('y', options.graphHeight - (options.marginBottom*0.25) + options.gutter)
     .attr('text-anchor', 'middle');
 
   // Add female bar
   categories.append('rect')
-    .attr('x', 0).attr('width', barWidth - gutter/2)
-    .attr('y', function(d) { return graphHeight - scaleY(d.value.female); })
-    .attr('height', function(d) { return scaleY(d.value.female); })
+    .attr('x', 0).attr('width', barWidth)
+    .attr('y', function(d) {
+      return options.marginTop + graphWallHeight - scaleHeight(d.value.female);
+    })
+    .attr('height', function(d) { return scaleHeight(d.value.female); })
     .attr('class', 'female bar');
 
+  // Add female label
+  categories.append('text').attr('text-anchor', 'middle')
+    .text(function(d) { return d.value.female; })
+    .attr('x', barWidth/2)
+    .attr('y', function(d) {
+      return options.marginTop + graphWallHeight - scaleHeight(d.value.female) - options.gutter;
+    })
+    .classed('small-label', true);
+
+  // Add male bar
   categories.append('rect')
-    .attr('x', barWidth - gutter/2).attr('width', barWidth - gutter/2)
-    .attr('y', function(d) { return graphHeight - scaleY(d.value.male); })
-    .attr('height', function(d) { return scaleY(d.value.male); })
+    .attr('x', barWidth).attr('width', barWidth)
+    .attr('y', function(d) {
+      return options.marginTop + graphWallHeight - scaleHeight(d.value.male);
+    })
+    .attr('height', function(d) { return scaleHeight(d.value.male); })
     .attr('class', 'male bar');
-  //
-  //   categories.append('line')
-  //     .attr('x1', 0).attr('x2', barWidth)
-  //     .attr('y1', graphHeight / 2).attr('y2', graphHeight / 2)
-  //     .attr('stroke', 'black');
+
+  // Add male label
+  categories.append('text').attr('text-anchor', 'middle')
+     .text(function(d) { return d.value.male; })
+     .attr('x', barWidth + barWidth/2)
+     .attr('y', function(d) {
+       return options.marginTop + graphWallHeight - scaleHeight(d.value.male) - options.gutter;
+     })
+     .classed('small-label', true);
+
+  // Add hover handlers
+  var bars = svg.selectAll('.female')
+    .on('mouseover', function(d, i) {
+      svg.append('line')
+        .attr('x1', options.marginLeft)
+        .attr('x2', options.marginLeft + graphWallWidth)
+        .attr('y1', options.marginTop + graphWallHeight - scaleHeight(d.value.female))
+        .attr('y2', options.marginTop + graphWallHeight - scaleHeight(d.value.female))
+        .classed('line-highlight', true);
+      svg.append('text').attr('text-anchor', 'middle')
+         .text(d.value.female)
+         .attr('x', translateX(i) + barWidth/2)
+         .attr('y', options.marginTop + graphWallHeight - scaleHeight(d.value.female) - options.gutter)
+         .classed('label-highlight', true)
+         .classed('small-label', true);
+    })
+    .on('mouseout', function(d) {
+      svg.selectAll('.line-highlight').remove();
+      svg.selectAll('.label-highlight').remove();
+    });
+
+    var bars = svg.selectAll('.male')
+      .on('mouseover', function(d, i) {
+        svg.append('line')
+          .attr('x1', options.marginLeft)
+          .attr('x2', options.marginLeft + graphWallWidth)
+          .attr('y1', options.marginTop + graphWallHeight - scaleHeight(d.value.male))
+          .attr('y2', options.marginTop + graphWallHeight - scaleHeight(d.value.male))
+          .classed('line-highlight', true);
+        svg.append('text').attr('text-anchor', 'middle')
+          .text(d.value.male)
+          .attr('x', barWidth + translateX(i) + barWidth/2)
+          .attr('y', options.marginTop + graphWallHeight - scaleHeight(d.value.male) - options.gutter)
+          .classed('label-highlight', true)
+          .classed('small-label', true);
+      })
+      .on('mouseout', function(d) {
+        svg.selectAll('.line-highlight').remove();
+        svg.selectAll('.label-highlight').remove();
+      });
 }

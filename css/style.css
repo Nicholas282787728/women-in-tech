@@ -39,7 +39,7 @@ section {
   align-items: center;
   text-align: center;
 }
-section + section { padding-top: 50vh; }
+section + section { margin-top: 50vh; }
 section > div {
   flex: 1;
  }
