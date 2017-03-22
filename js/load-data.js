@@ -7,6 +7,43 @@ var data = {
   'job': []
 };
 
+// Set graph options
+var graphOptions = {
+  'hs-group': {
+    graphWidth: 500,
+    graphHeight: 150
+  },
+  'hs-year': {
+    'graphWidth': 600,
+    'graphHeight': 400
+  },
+  'bs-group': {
+    graphWidth: 500,
+    graphHeight: 150
+  },
+  'bs-year': {
+    'graphWidth': 600,
+    'graphHeight': 400
+  },
+  'grad-group': {
+    graphWidth: 500,
+    graphHeight: 150
+  },
+  'grad-year': {
+    'graphWidth': 600,
+    'graphHeight': 400
+  },
+  'work-group': {
+    graphWidth: 500,
+    graphHeight: 150
+  },
+  'work-year': {
+    'graphWidth': 600,
+    'graphHeight': 400
+  },
+}
+
+
 function combineData() {
   return function(error, raw_hs_data, raw_college_data,
     raw_ms_data, raw_phd_data, raw_job_data) {
@@ -78,13 +115,13 @@ function combineData() {
     });
 
   drawPipe();
-  plotByCategory('hs-group', data['hs'], {'graphWidth': 500, 'graphHeight': 150});
-  plotByYear('hs-year', data['hs'], {'graphWidth': 600, 'graphHeight': 400});
-  plotByCategory('bs-group', data['bs'], {'graphWidth': 500, 'graphHeight': 150});
+  plotByCategory('hs-group', data['hs']);
+  plotByYear('hs-year', data['hs']);
+  plotByCategory('bs-group', data['bs']);
   plotByYear('bs-year', data['bs']);
-  plotByCategory('grad-group', data['ms'].concat(data['phd']), {'graphWidth': 500, 'graphHeight': 150});
+  plotByCategory('grad-group', data['ms'].concat(data['phd']));
   plotByYear('grad-year', data['ms'].concat(data['phd']));
-  plotByCategory('work-group', data['job'], {'graphWidth': 500, 'graphHeight': 150});
+  plotByCategory('work-group', data['job']);
   plotByYear('work-year', data['job']);
   }
 }
