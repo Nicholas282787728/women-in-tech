@@ -340,6 +340,9 @@ function plotByCategory(canvasId, groupData, options={}) {
   var scaleHeight = d3.scaleLinear().domain([0, maxValue]).nice()
     .range([0, graphWallHeight]);
 
+  // Create transition
+  var barTransition = d3.transition().duration(1000);
+
   // Set up canvas variables
   var canvas = d3.select('#'+canvasId);
   var svg = canvas.append('svg')
@@ -350,7 +353,10 @@ function plotByCategory(canvasId, groupData, options={}) {
 
 
   // Create category groups
-  var categories = svg.selectAll('.categories').data(nestedData).enter()
+  var categoryJoin = svg.selectAll('.categories')
+    .data(nestedData, function(d) { return d.key; });
+
+  var categories = categoryJoin.enter()
     .append('g')
     .classed('categories', 'true')
     .attr('transform', function(d,i) { return 'translate('+ translateX(i) +')'; });
@@ -362,8 +368,12 @@ function plotByCategory(canvasId, groupData, options={}) {
     .attr('text-anchor', 'middle');
 
   // Add female bar
-  categories.append('rect')
+  var fBar = categories.append('rect')
+    .classed('female')
     .attr('x', 0).attr('width', barWidth)
+    .attr('y', function(d) { return options.marginTop + graphWallHeight; })
+    .attr('height', 0)
+    .transition(barTransition)
     .attr('y', function(d) {
       return options.marginTop + graphWallHeight - scaleHeight(d.value.female);
     })
