@@ -7,6 +7,7 @@
 /* Resets (some adapted from normalize.css) */
 html {
   box-sizing: border-box;
+  font-size: 18px;
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -33,16 +34,25 @@ body {
 section {
   width: 80%;
   margin: auto;
-  padding-top: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding-top: 5vh;
 }
-section + section { margin-top: 50vh; }
+section + section, aside + section {
+  padding-top: 10vh;
+  margin-top: 50vh;
+}
 section > div {
   flex: 1;
  }
+
+ aside {
+   width: 80%;
+   margin: auto;
+ }
+ aside h2 { text-align: center; }
 
 nav {
   position: fixed;
@@ -69,10 +79,13 @@ nav li {
   padding: 0 0.5em;
 }
 a, a:visited {
-  color: var(--bg-color);
   text-decoration: none;
 }
-a:hover { color: rgb(142, 99, 182); }
+nav a, nav a:visited {
+  color: var(--bg-color);
+}
+a, a:visited { color: rgb(22, 183, 199); }
+a:hover, nav a:hover { color: rgb(142, 99, 182); }
 
 h1 {
   font-size: 3em;
@@ -93,6 +106,7 @@ h1 {
     padding-bottom: 100%;
     vertical-align: top;
     overflow: hidden;
+    margin-top: 4vh;
 }
 .svg-content {
     display: inline-block;
@@ -109,3 +123,9 @@ h1 {
 .line-secondary { stroke: var(--font-secondary); }
 .line-highlight { stroke: yellow; }
 .label-highlight { fill: blue; }
+
+
+.intro {
+  font-size: 1.4em;
+  line-height: 1.5;
+}

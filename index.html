@@ -2,6 +2,7 @@
 <html lang='en-US'>
 <head>
     <title>Women in Tech</title>
+    <meta charset='utf-8'>
     <script src='js/d3.min.js'></script>
     <link rel='stylesheet' href='css/style.css'>
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
@@ -14,16 +15,17 @@
       <li><a href='#bs'>College</a></li>
       <li><a href='#grad'>Graduate School</a></li>
       <li><a href='#work'>Workforce</a></li>
-      <li>About</li>
+      <li><a href='#resources'>Resources</a></li>
     </ul>
   </nav>
 
   <section id='overview'>
     <div>
       <h1>Women in Tech</h1>
-      <p class='intro'>Click to jump to an age group, or scroll down to explore everything.</p>
-      <p>[Real Project Description Here]</p>
+      <p class='intro'>Let's face it: tech has a diversity problem. Women and minorities earn fewer tech degrees, get fewer tech jobs, and leave companies and degree programs sooner than their white male colleagues, even as colleges and tech companies trumpet their commitment to diversity. Many companies blame this on the “leaky pipeline” of tech education, claiming that degree programs just aren't producing enough qualified minority candidates. But reality, as always, is more complex.</p>
+      <p class='intro'>Click a piece of the pipeline to jump to its gender stats, or scroll down to explore the whole pipeline.</p>
       <div id='pipes' class='svg-container' style='padding-bottom:21%'></div>
+      <p>The data here focuses on gender diversity, but ethnic diversity is also problematic—and women of color face the biggest obstacles of all. Take a look at the <a href='#resources'>resources list</a> for more on both gender and ethnic inclusivity.</p>
     </div>
   </section>
 
@@ -33,11 +35,16 @@
       <div class='flex-container'>
         <div id='hs-year' class='svg-container' style='flex:1; padding-bottom:50%'></div>
         <div class='discussion-group' style='flex:1'>
-          <p>Discussion here</p>
+          <p>High school students can take the Advanced Placement Computer Science exam to earn college credit for high school coursework in computing. Recently, more of the students taking the exam are female, and their average score has increased. Boys are still more likely to take the test and to earn top scores, though, so there's still work to do.</p>
+          <p>Click on a year to view that year's score distribution.</p>
           <div id='hs-group' class='svg-container' style='padding-bottom:30%'></div>
         </div>
     </div>
   </section>
+
+  <aside>
+    <h2>Expectations Affect Outcomes</h2>
+  </aside>
 
   <section id='bs'>
     <div>
@@ -51,6 +58,10 @@
     </div>
   </section>
 
+  <aside>
+    <h2>The Leaky Pipeline</h2>
+  </aside>
+
   <section id='grad'>
     <div>
       <h1>Graduate School</h1>
@@ -62,6 +73,10 @@
         </div>
     </div>
   </section>
+
+  <aside>
+    <h2>When is a Pipeline not a Pipeline?</h2>
+  </aside>
 
   <section id='work'>
     <div>
@@ -75,6 +90,14 @@
     </div>
   </section>
 
+  <section id='resources'>
+    <h1>Resources</h1>
+  </section>
+
+<script>
+var nav = document.querySelector('nav');
+console.log(nav);
+</script>
 <script src='js/drawCategory.js'></script>
 <script src='js/drawYears.js'></script>
 <script src='js/draw.js'></script>
