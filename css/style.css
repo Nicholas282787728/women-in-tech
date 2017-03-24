@@ -40,17 +40,22 @@ section {
   text-align: center;
   padding-top: 5vh;
 }
-section + section, aside + section {
-  padding-top: 10vh;
-  margin-top: 50vh;
-}
+aside + section { padding-top: 10vh; }
+section + aside { margin-top: 10vh; }
 section > div {
   flex: 1;
  }
 
+.intro {
+  font-size: 1.2em;
+  width: 80%;
+  margin: 5vh auto;
+}
  aside {
    width: 80%;
    margin: auto;
+   padding: 10vh 5vw;
+   border: 3px solid var(--font-color);
  }
  aside h2 { text-align: center; }
 
@@ -125,7 +130,9 @@ h1 {
 .label-highlight { fill: blue; }
 
 
-.intro {
+h2 { margin-bottom: 2em;}
+p {
   font-size: 1.4em;
   line-height: 1.5;
 }
+p + p { margin-top: 1em;}
