@@ -30,7 +30,7 @@ function plotByCategory(canvasId, groupData, options={}) {
     'marginLeft': 50,
     'marginRight': 50,
     'marginTop': 10,
-    'marginBottom': 15,
+    'marginBottom': 20,
     'gutter': 4
   }
   for (option in defaults) {
@@ -79,10 +79,10 @@ function plotByCategory(canvasId, groupData, options={}) {
     .classed('categories', 'true')
     .attr('transform', function(d,i) { return 'translate('+ translateX(i) +')'; });
 
-  // Add score label
-  categories.append('text').text(function(d) { return d.key.substring(0,9); })
+  // Add category label
+  categories.append('text').text(function(d) { return d.key; })
     .attr('x', barWidth)
-    .attr('y', options.graphHeight - (options.marginBottom*0.25) + options.gutter)
+    .attr('y', options.graphHeight -  options.gutter)
     .attr('text-anchor', 'middle');
 
   // Add female bar
@@ -153,6 +153,7 @@ function plotByCategory(canvasId, groupData, options={}) {
       .classed('line-highlight', true);
     svg.append('text')
       .classed('label-highlight', true)
+      .classed('small-label', true)
       .text(-1 * Math.round(scaleHeight.invert(mouseY - options.marginTop - graphWallHeight)))
       .attr('x', options.marginLeft + graphWallWidth)
       .attr('y', mouseY);
@@ -161,4 +162,7 @@ function plotByCategory(canvasId, groupData, options={}) {
     svg.selectAll('.line-highlight').remove();
     svg.selectAll('.label-highlight').remove();
   });
+
+  // Wrap text labels
+  svg.selectAll('text').call(wrapText, barWidth * 2);
 }

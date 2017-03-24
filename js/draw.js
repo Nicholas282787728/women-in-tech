@@ -1,5 +1,39 @@
 var hsDispatch = d3.dispatch('click');
 
+
+function wrapText(text, width) {
+  text.each(function() {
+    var t = d3.select(this);
+    var words = t.text().split(/\s+/).reverse(),
+        word = '';
+    var line = [],
+        lineNum = 0,
+        lineHeight = 1.1;
+    var x = t.attr('x'),
+        y = t.attr('y'),
+        dy = parseFloat(t.attr('dy')) || 0;
+    var tspan = t.text(null).append('tspan')
+          .classed('small-label', true)
+          .attr('x', x).attr('text-anchor', 'middle')
+          .attr('y', y)
+          .attr('dy', dy +'em');
+
+    while (word = words.pop()) {
+      line.push(word);
+      tspan.text(line.join(" "));
+      if (tspan.node().getComputedTextLength() > width) {
+        line.pop();
+        tspan.text(line.join(" "));
+        line = [word];
+        tspan = t.append('tspan')
+          .attr('x', x).attr('text-anchor', 'middle')
+          .attr('y', y)
+          .attr('dy', ++lineNum * lineHeight);
+      }
+    }
+  });
+}
+
 function drawPipe() {
 
   // Save total counts by sex for each education/career stage
@@ -8,7 +42,7 @@ function drawPipe() {
     'id': 'hs',
     'data': data['hs'],
     'label': 'High School',
-    'description': 'AP CS Tests Taken',
+    'description': 'AP Computer Science Tests Taken',
     'male': d3.sum(data['hs'], function(s) {
       return s.sex == 'M' ? s.count : 0;
     }),
@@ -117,35 +151,7 @@ function drawPipe() {
     .attr('y2', pipeHeight / 2)
     .attr('stroke', 'black');
 
-  // groups.selectAll('text.small-label').call(wrapText, groupWidth);
-  //
-  // function wrapText(text, width) {
-  //   text.each(function() {
-  //     var t = d3.select(this);
-  //     var words = t.text().split(/\s+/).reverse(),
-  //         word = '';
-  //     var line = [],
-  //         lineNum = 0,
-  //         lineHeight = 1.1;
-  //     var y = t.attr('y'),
-  //         dy = parseFloat(t.attr('dy'));
-  //     var tspan = t.text(null).append('tspan')
-  //           .attr('x', 0)
-  //           .attr('y', y)
-  //           .attr('dy', dy +'em');
-  //
-  //     while (word = words.pop()) {
-  //       line.push(word);
-  //       tspan.text(line.join(" "));
-  //       if (tspan.node().getComputedTextLength() > width) {
-  //         line.pop();
-  //         tspan.text(line.join(" "));
-  //         line = [word];
-  //         tspan = t.append('tspan').attr('x', 0).attr('y', y)
-  //           .attr('dy', ++lineNum * lineHeight);
-  //       }
-  //     }
-  //   });
-  // }
+  groups.selectAll('text.small-label').call(wrapText, groupWidth);
+
 
 }

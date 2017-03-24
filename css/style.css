@@ -2,6 +2,8 @@
   --font-color: rgb(35, 35, 35);
   --font-secondary: rgb(84, 84, 84);
   --bg-color: white;
+  --heading-font-stack: 'Hack', monospace;
+  --body-font-stack: 'Muli', sans-serif;
 }
 
 /* Resets (some adapted from normalize.css) */
@@ -27,9 +29,11 @@ html {
 body {
   background-color: var(--bg-color);
   color: var(--font-color);
-  font-family: 'Fira Sans', sans-serif;
+  font-family: var(--body-font-stack);
   fill: var(--font-color);
 }
+
+h1, h2 { font-family: var(--heading-font-stack); }
 
 section {
   width: 80%;
@@ -41,10 +45,7 @@ section {
   padding-top: 5vh;
 }
 aside + section { padding-top: 10vh; }
-section + aside { margin-top: 10vh; }
-section > div {
-  flex: 1;
- }
+section > div { flex: 1; }
 
 .intro {
   font-size: 1.2em;
@@ -53,7 +54,7 @@ section > div {
 }
  aside {
    width: 80%;
-   margin: auto;
+   margin: 10vh auto;
    padding: 10vh 5vw;
    border: 3px solid var(--font-color);
  }

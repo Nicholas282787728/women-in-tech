@@ -1,37 +1,37 @@
 Year,Program,Sex,Graduates
-2010,CS,M,5381
-2010,CS,F,1434
-2010,CE,M,594
-2010,CE,F,171
-2010,I,M,945
-2010,I,F,981
-2011,CS,M,4968
-2011,CS,F,1623
-2011,CE,M,920
-2011,CE,F,262
-2011,I,M,1150
-2011,I,F,1054
-2012,CS,M,5645
-2012,CS,F,1644
-2012,CE,M,682
-2012,CE,F,196
-2012,I,M,1052
-2012,I,F,1126
-2013,CS,M,5629
-2013,CS,F,1518
-2013,CE,M,543
-2013,CE,F,175
-2013,I,M,1126
-2013,I,F,1092
-2014,CS,M,5813
-2014,CS,F,1641
-2014,CE,M,491
-2014,CE,F,156
-2014,I,M,1386
-2014,I,F,1299
-2015,CS,M,7268
-2015,CS,F,2404
-2015,CE,M,467
-2015,CE,F,147
-2015,I,M,1294
-2015,I,F,1194
+2010,Computer Science,M,5381
+2010,Computer Science,F,1434
+2010,Computer Engineering,M,594
+2010,Computer Engineering,F,171
+2010,Information Science,M,945
+2010,Information Science,F,981
+2011,Computer Science,M,4968
+2011,Computer Science,F,1623
+2011,Computer Engineering,M,920
+2011,Computer Engineering,F,262
+2011,Information Science,M,1150
+2011,Information Science,F,1054
+2012,Computer Science,M,5645
+2012,Computer Science,F,1644
+2012,Computer Engineering,M,682
+2012,Computer Engineering,F,196
+2012,Information Science,M,1052
+2012,Information Science,F,1126
+2013,Computer Science,M,5629
+2013,Computer Science,F,1518
+2013,Computer Engineering,M,543
+2013,Computer Engineering,F,175
+2013,Information Science,M,1126
+2013,Information Science,F,1092
+2014,Computer Science,M,5813
+2014,Computer Science,F,1641
+2014,Computer Engineering,M,491
+2014,Computer Engineering,F,156
+2014,Information Science,M,1386
+2014,Information Science,F,1299
+2015,Computer Science,M,7268
+2015,Computer Science,F,2404
+2015,Computer Engineering,M,467
+2015,Computer Engineering,F,147
+2015,Information Science,M,1294
+2015,Information Science,F,1194
