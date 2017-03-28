@@ -1,4 +1,26 @@
-\subsection{Data Sources}
-The overview requires at least three data sources: demographic breakdowns for high school technology students, for college and graduate students pursuing IT degrees, and for women employed in technical fields. I plan to use the College Board’s AP Computer Science demographics for high school, the Computing Research Association’s Taulbee Survey for college and graduate school, and federal labor statistics for employment. All three datasets are publicly available online with several years of historical data, and all three have been used in both research and advocacy work.
+\subsection{Data Sources}\label{data}
+The data behind the visualization comes from three publicly available sources:
+%% TODO: Add citations %%
+\begin{itemize}
+  \item The College Board's AP Computer Science test taker demographics
+  \item The Taulbee Survey's annual reports of diversity in computing education
+  \item The Bureau of Labor Statistics' employment report by occupation
+\end{itemize}
 
-The detailed views will incorporate more specific data in each category, likely involving supplementary datasets. In particular, I would like to provide additional data for the higher education and career phases to explore the pipeline metaphor: attrition rates among computer science majors to illustrate the proverbial leaks, and the prevalence of professional women with alternate career paths to demonstrate its oversimplicity. I would also like to include a breakdown of professional technologists by role or job title, perhaps from a source like the Stack Overflow User Census.
+Where feasible, I collected all data going back to 2010; the Bureau of Labor Statistics changed their reporting categories in 2011, so for consistency I excluded their 2010 data. Only the College Board had released 2016 data at the time of collection. Because not all groups contain the same years' data, visualizations including multiple groups use percentage breakdowns by gender, rather than absolute comparisons.
+
+\begin{table}
+  \caption{Summary of Data Sources Used}
+  \label{tbl:data-sources}
+  \begin{tabular}{L{3cm}cL{4.5cm}l} \hline
+    \textbf{Data Source} & \textbf{Years Included} & \textbf{Subset} & \textbf{Variables} \\ \hline
+    College Board AP Statistics & 2010--2016 & AP Computer Science Exam & Gender, Exam Score \\
+    CRA's Taulbee Survey & 2010--2015 & Graduate \& Undergraduate degrees awarded & Gender, Program \\
+  \end{tabular}
+
+\end{table}
+
+\subsubsection{Data Cleaning}
+All three data sources are available either as spreadsheets or in PDF tables. The College Board spreadsheets include demographic information for all AP tests, broken out by gender and by exam score, so I extracted the data for the Computer Science exam and discarded the others. The Bureau of Labor Statistics similarly includes all occupations in their spreadsheet, so I extracted the data for all of the ``Computer and Mathematical Occupations'' as seen in the literature. The Taulbee Survey publishes its data as part of a PDF report; because the data is already aggregated (and consequently fairly small), I manually copied the data from their PDFs into a CSV file.
+
+Both the College Board and the Taulbee Survey give the aggregated counts of male and female students for each relevant category, so the only further processing required was to format each row consistently. The Bureau of Labor Statistics, on the other hand, provides a total count of employees for each category, rounded to the nearest thousand, along with the percentage of women employed in each category. They do not provide diversity statistics for categories with fewer than 50,000 total employees, so I excluded these categories from the visualization. For the categories included, I used the percentages provided to calculate an approximate female employee count, to correspond with the data for educational stages.
