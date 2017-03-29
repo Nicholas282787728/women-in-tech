@@ -1,6 +1,3 @@
-var hsDispatch = d3.dispatch('click');
-
-
 function wrapText(text, width) {
   text.each(function() {
     var t = d3.select(this);
@@ -102,7 +99,7 @@ function drawPipe() {
 
   // Create pipe segments for each group
   var groups = canvas.selectAll('.pipe').data(overviewData).enter()
-    .append('a').attr('href', function(d) { return '#'+ d.id; })
+    // .append('a').attr('href', function(d) { return '#'+ d.id; })
     .append('g')
     .classed('pipe', 'true')
     .attr('transform', function(d,i) {
@@ -152,6 +149,13 @@ function drawPipe() {
     .attr('stroke', 'black');
 
   groups.selectAll('text.small-label').call(wrapText, groupWidth);
-
-
 }
+
+document.addEventListener('scroll', function() {
+  var arrow = document.querySelector('.arrow-container');
+  if (document.body.scrollTop < arrow.offsetTop) {
+    arrow.style.opacity = 1 - (document.body.scrollTop / arrow.offsetTop);
+    console.log(document.body.scrollTop / arrow.offsetTop);
+    console.log('Scrolling!');
+  }
+});

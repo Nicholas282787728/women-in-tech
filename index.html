@@ -3,7 +3,6 @@
 <head>
     <title>Women in Tech</title>
     <meta charset='utf-8'>
-    <script src='js/d3.min.js'></script>
     <link rel='stylesheet' href='css/style.css'>
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.020/css/hack.min.css">
@@ -26,6 +25,11 @@
       <p class='intro'>Let's face it: tech has a diversity problem. Women and minorities earn fewer tech degrees, get fewer tech jobs, and leave companies and degree programs sooner than their white male colleagues, even as colleges and tech companies trumpet their commitment to diversity. Many companies blame this on the “leaky pipeline” of tech education, claiming that degree programs just aren't producing enough qualified minority candidates. But reality, as always, is more complex.</p>
       <div id='pipes' class='svg-container' style='padding-bottom:21%'></div>
       <p>The data here focuses on gender diversity, but ethnic diversity is also problematic—and women of color face the biggest obstacles of all. Take a look at the <a href='#resources'>resources list</a> for more on both gender and ethnic inclusivity.</p>
+      <div class='arrow-container'>
+        <div class='arrow'>
+          <i class='fa fa-2x fa-angle-down'></i>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -109,10 +113,9 @@
     <h1>Resources</h1>
   </section>
 
-<script>
-var nav = document.querySelector('nav');
-console.log(nav);
-</script>
+<script src='js/d3.min.js'></script>
+<script src="https://use.fontawesome.com/4c4e46d5a5.js"></script>
+
 <script src='js/drawCategory.js'></script>
 <script src='js/drawYears.js'></script>
 <script src='js/draw.js'></script>

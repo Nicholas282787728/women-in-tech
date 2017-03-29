@@ -68,7 +68,7 @@ nav {
   color: var(--bg-color);
   min-height: 8vh;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -137,3 +137,45 @@ p {
   line-height: 1.5;
 }
 p + p { margin-top: 1em;}
+
+.arrow-container{
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  right: 0;
+}
+
+.arrow{
+  fill: none;
+  width: 60px;
+  height: 60px;
+  background: rgb(182, 133, 226);
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+  display: table;
+}
+
+.arrow:before{
+  width: 52px;
+  height: 52px;
+  content: "";
+  border: 2px solid var(--bg-color);
+  border-radius: 50%;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+
+.arrow i.fa{
+  font-size: 30px;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  color: var(--bg-color);
+}
