@@ -40,52 +40,52 @@ function drawPipe() {
   var overviewData = [];
   overviewData.push({
     'id': 'hs',
-    'data': data['hs'],
+    'data': data.hs,
     'label': 'High School',
     'description': 'AP Computer Science Tests Taken',
-    'male': d3.sum(data['hs'], function(s) {
+    'male': d3.sum(data.hs, function(s) {
       return s.sex == 'M' ? s.count : 0;
     }),
-    'female': d3.sum(data['hs'], function(s) {
+    'female': d3.sum(data.hs, function(s) {
       return s.sex == 'F' ? s.count : 0;
     })
   });
 
   overviewData.push({
     'id': 'bs',
-    'data': data['bs'],
+    'data': data.bs,
     'label': 'College',
     'description': 'Tech Degrees Awarded',
-    'male': d3.sum(data['bs'], function(s) {
+    'male': d3.sum(data.bs, function(s) {
       return s.sex == 'M' ? s.count : 0;
     }),
-    'female': d3.sum(data['bs'], function(s) {
+    'female': d3.sum(data.bs, function(s) {
       return s.sex == 'F' ? s.count : 0;
     })
   });
 
   overviewData.push({
     'id': 'grad',
-    'data': data['ms'].concat(data['phd']),
+    'data': data.ms.concat(data.phd),
     'label': 'Graduate School',
     'description': 'Tech Degrees Awarded',
-    'male': d3.sum(data['ms'].concat(data['phd']), function(s) {
+    'male': d3.sum(data.ms.concat(data.phd), function(s) {
       return s.sex == 'M' ? s.count : 0;
     }),
-    'female': d3.sum(data['ms'].concat(data['phd']), function(s) {
+    'female': d3.sum(data.ms.concat(data.phd), function(s) {
       return s.sex == 'F' ? s.count : 0;
     })
   });
 
   overviewData.push({
     'id': 'work',
-    'data': data['job'],
+    'data': data.job,
     'label': 'Workforce',
     'description': 'People Employed in Computing',
-    'male': d3.sum(data['hs'], function(s) {
+    'male': d3.sum(data.hs, function(s) {
       return s.sex == 'M' ? s.count : 0;
     }),
-    'female': d3.sum(data['hs'], function(s) {
+    'female': d3.sum(data.hs, function(s) {
       return s.sex == 'F' ? s.count : 0;
     })
   });
@@ -106,7 +106,7 @@ function drawPipe() {
     .append('g')
     .classed('pipe', 'true')
     .attr('transform', function(d,i) {
-      return 'translate('+ i * groupWidth +',20)'
+      return 'translate('+ i * groupWidth +',20)';
     });
 
 

@@ -19,7 +19,7 @@ function plotByCategory(canvasId, groupData, options={}) {
           'female': d3.sum(leaves, function(l) {
             return l.sex == 'F' ? l.count : 0;
           })
-        }
+        };
       })
       .entries(groupData);
 
@@ -32,8 +32,8 @@ function plotByCategory(canvasId, groupData, options={}) {
     'marginTop': 10,
     'marginBottom': 20,
     'gutter': 4
-  }
-  for (option in defaults) {
+  };
+  for (var option in defaults) {
     if (!options[option]) {
       options[option] = defaults[option];
     }
@@ -46,7 +46,7 @@ function plotByCategory(canvasId, groupData, options={}) {
   var scaleWidth = function(rawValue) { return rawValue * graphWallWidth; };
   var translateX = function(i) {
     return options.marginLeft + (i * barWidth * 2) + (options.gutter * (i+1));
-  }
+  };
   var maxValue = d3.max(nestedData, function(d) {
     return d3.max([d.value.female, d.value.male]);
   });

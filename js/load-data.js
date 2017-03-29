@@ -41,7 +41,7 @@ var graphOptions = {
     'graphWidth': 600,
     'graphHeight': 400
   },
-}
+};
 
 
 function combineData() {
@@ -49,7 +49,7 @@ function combineData() {
     raw_ms_data, raw_phd_data, raw_job_data) {
 
     raw_hs_data.forEach(function(d) {
-      data['hs'].push({
+      data.hs.push({
         year: +d.Year,
         score: d.Score,
         sex: d.Sex,
@@ -58,7 +58,7 @@ function combineData() {
     });
 
     raw_college_data.forEach(function(d) {
-      data['bs'].push({
+      data.bs.push({
         year: +d.Year,
         program: d.Program,
         sex: d.Sex,
@@ -67,7 +67,7 @@ function combineData() {
     });
 
     raw_ms_data.forEach(function(d) {
-      data['ms'].push({
+      data.ms.push({
         year: +d.Year,
         program: d.Program,
         sex: d.Sex,
@@ -76,7 +76,7 @@ function combineData() {
     });
 
     raw_phd_data.forEach(function(d) {
-      data['phd'].push({
+      data.phd.push({
         year: +d.Year,
         program: d.Program,
         sex: d.Sex,
@@ -100,13 +100,13 @@ function combineData() {
 
     // Re-format job data to match others
     cleaned_job_data.forEach(function(d) {
-      data['job'].push({
+      data.job.push({
         year: d.year,
         occupation: d.occupation,
         sex: 'F',
         count: Math.ceil(d.count * d.pctFemale)
       });
-      data['job'].push({
+      data.job.push({
         year: d.year,
         occupation: d.occupation,
         sex: 'M',
@@ -114,16 +114,16 @@ function combineData() {
       });
     });
 
-  drawPipe();
-  plotByCategory('hs-group', data['hs']);
-  plotByYear('hs-year', data['hs']);
-  plotByCategory('bs-group', data['bs']);
-  plotByYear('bs-year', data['bs']);
-  plotByCategory('grad-group', data['ms'].concat(data['phd']));
-  plotByYear('grad-year', data['ms'].concat(data['phd']));
-  plotByCategory('work-group', data['job']);
-  plotByYear('work-year', data['job']);
-  }
+    drawPipe();
+    plotByCategory('hs-group', data.hs);
+    plotByYear('hs-year', data.hs);
+    plotByCategory('bs-group', data.bs);
+    plotByYear('bs-year', data.bs);
+    plotByCategory('grad-group', data.ms.concat(data.phd));
+    plotByYear('grad-year', data.ms.concat(data.phd));
+    plotByCategory('work-group', data.job);
+    plotByYear('work-year', data.job);
+  };
 }
 
 function loadData() {
