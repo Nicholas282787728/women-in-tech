@@ -58,9 +58,6 @@ function plotByCategory(canvasId, groupData, options={}) {
 
   // Set up canvas variables
   var canvas = d3.select('#'+canvasId);
-  var testSVG = d3.select('#'+canvasId+' svg');
-  console.log(testSVG);
-  if (testSVG) console.log('Something here!');
   var svg = canvas.append('svg')
     .attr('viewBox', '0 0 '+options.graphWidth+' '+ options.graphHeight)
     .classed('svg-content', 'true');

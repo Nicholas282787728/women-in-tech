@@ -136,9 +136,9 @@ function plotByYear(canvasId, groupData) {
     });
 
   // Add click handlers
-  bars.on('click', function(d) {
-    var group = canvasId.split('-')[0];
-    plotByCategory(group+'-group',
-      groupData.filter(function(y) { return y.year == d.key; }));
-  });
+  // bars.on('click', function(d) {
+  //   var group = canvasId.split('-')[0];
+  //   plotByCategory(group+'-group',
+  //     groupData.filter(function(y) { return y.year == d.key; }));
+  // });
 }

@@ -89,12 +89,12 @@ function drawPipe() {
 
   // Set canvas variables
   var canvas = d3.select('#pipes').append('svg')
-    .attr('viewBox', '0, 0, 600, 125')
+    .attr('viewBox', '0, 0, 1300, 250')
     .attr('preserveAspectRatio', 'xMinYMin meet')
     .classed("svg-content", true);
-  var groupWidth = 150;
-  var gutterWidth = 1;
-  var pipeHeight = 75;
+  var groupWidth = 300;
+  var gutterWidth = 2;
+  var pipeHeight = 150;
 
 
   // Create pipe segments for each group
@@ -103,15 +103,16 @@ function drawPipe() {
     .append('g')
     .classed('pipe', 'true')
     .attr('transform', function(d,i) {
-      return 'translate('+ i * groupWidth +',20)';
+      return 'translate('+ i * groupWidth +',40)';
     });
 
 
   // Add top label
   groups.append('text').text(function(d) { return d.label; })
+    .classed('big-label', true)
     .attr('text-anchor', 'middle')
     .attr('x', groupWidth / 2)
-    .attr('y', -5);
+    .attr('y', -10);
 
   // Add female pipe segment
   groups.append('rect')
@@ -137,25 +138,112 @@ function drawPipe() {
   groups.append('text').text(function(d) { return d.description; })
     .attr('text-anchor', 'middle')
     .attr('x', groupWidth / 2)
-    .attr('y', pipeHeight + 15)
-    .classed('small-label', 'true');
+    .attr('y', pipeHeight + 30);
+
+  // Add legend
+  var legends = canvas.append('g')
+    .attr('transform', 'translate(0, '+ (40+gutterWidth) +')');
+
+  // Add female legends
+  var fLegend = legends.append('rect')
+    .classed('female', true)
+    .attr('x', groupWidth * overviewData.length + gutterWidth)
+    .attr('width', 14)
+    .attr('height', pipeHeight/2);
+  var fLabel = legends.append('text')
+    .classed('small-label', true).classed('female', true)
+    .attr('x', groupWidth * overviewData.length + 54)
+    .attr('text-anchor', 'middle')
+    .attr('y', 20)
+    .attr('alignment-baseline', 'middle');
+  legends.append('text').classed('small-label', true).classed('female', true)
+    .text('Female')
+    .attr('x', groupWidth * overviewData.length + 54)
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'hanging');
+
+  // Add male legends
+  var mLegend = legends.append('g')
+    .append('rect')
+    .classed('male', true)
+    .attr('x', groupWidth * overviewData.length + gutterWidth)
+    .attr('y', pipeHeight/2)
+    .attr('width', 14)
+    .attr('height', pipeHeight/2);
+  var mLabel = legends.append('text')
+    .classed('small-label', true).classed('male', true)
+    .attr('x', groupWidth * overviewData.length + 54)
+    .attr('text-anchor', 'middle')
+    .attr('y', pipeHeight/2 + 40)
+    .attr('alignment-baseline', 'middle');
+  legends.append('text').classed('small-label', true).classed('male', true)
+    .text('Male')
+    .attr('x', groupWidth * overviewData.length + 52)
+    .attr('y', pipeHeight)
+    .attr('text-anchor', 'middle');
 
   // Add 50% line
-  groups.append('line')
+  legends.append('line')
     .attr('x1', 0)
-    .attr('x2', groupWidth)
+    .attr('x2', 1240)
     .attr('y1', pipeHeight / 2)
     .attr('y2', pipeHeight / 2)
     .attr('stroke', 'black');
+  legends.append('text').classed('small-label', true)
+    .text('50%')
+    .attr('x', 1240+gutterWidth)
+    .attr('y', pipeHeight / 2)
+    .attr('alignment-baseline', 'middle');
 
-  groups.selectAll('text.small-label').call(wrapText, groupWidth);
+  groups.selectAll('text').call(wrapText, groupWidth);
+
+  function resetLegend() {
+    canvas.selectAll('.interactive').remove();
+    fLegend.transition().duration(250)
+      .attr('height', pipeHeight/2);
+    fLabel.text('');
+    mLegend.transition().duration(250)
+      .attr('y', pipeHeight/2).attr('height', pipeHeight/2);
+    mLabel.text('');
+  }
+
+  canvas.on('mousemove', function() {
+    // Remove existing lines/labels
+    canvas.selectAll('.interactive').remove();
+
+    // Save current mouse height (snap to graph wall)
+    var coordinates = d3.mouse(this);
+    var realMouseY = coordinates[1]; // use this for drawing
+    // Pipe is offset by 40px
+    var adjustedMouseY = realMouseY - 40; // use this for calculating
+    if (adjustedMouseY > pipeHeight || adjustedMouseY < 0) {
+    //  resetLegend();
+      return;
+    }
+
+    // Add line at current mouse height
+    canvas.append('line')
+      .attr('x1', 0)
+      .attr('x2', 1220)
+      .attr('y1', realMouseY)
+      .attr('y2', realMouseY)
+      .classed('line-highlight', true)
+      .classed('interactive', true);
+
+    // Adjust legend height to match current mouse height
+    fLegend.attr('height', adjustedMouseY);
+    mLegend.attr('y', adjustedMouseY).attr('height', pipeHeight - adjustedMouseY);
+
+    // Adjust percentages to match current mouse height
+    fLabel.text(Math.round(1000 * adjustedMouseY / pipeHeight)/10);
+    mLabel.text(Math.round(1000 - Math.round(1000 * adjustedMouseY / pipeHeight))/10);
+  })
+  .on('mouseleave', resetLegend);
 }
 
 document.addEventListener('scroll', function() {
   var arrow = document.querySelector('.arrow-container');
   if (document.body.scrollTop < arrow.offsetTop) {
     arrow.style.opacity = 1 - (document.body.scrollTop / arrow.offsetTop);
-    console.log(document.body.scrollTop / arrow.offsetTop);
-    console.log('Scrolling!');
   }
 });

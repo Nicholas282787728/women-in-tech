@@ -20,10 +20,10 @@ html {
   padding: 0;
 }
 * + section * {
-  margin-top: 1em;
+  margin-top: 1rem;
 }
 .flex-container * + * {
-  margin-left: 1em;
+  margin-left: 1rem;
 }
 
 body {
@@ -103,6 +103,7 @@ h1 {
 .bar { stroke: black; }
 
 .small-label { font-size: 0.7em; }
+.big-label { font-size: 2em; }
 
 .svg-container {
     display: inline-block;
@@ -126,9 +127,8 @@ h1 {
 
 
 .line-primary { stroke: var(--font-color); }
-.line-secondary { stroke: var(--font-secondary); }
 .line-highlight { stroke: yellow; }
-.label-highlight { fill: blue; }
+/*.label-highlight { fill: blue; }*/
 
 
 h2 { margin-bottom: 2em;}
@@ -142,7 +142,7 @@ p + p { margin-top: 1em;}
   width: 100px;
   height: 100px;
   margin: 0 auto;
-  position: absolute;
+  position: fixed;
   bottom: 25px;
   left: 0;
   right: 0;
