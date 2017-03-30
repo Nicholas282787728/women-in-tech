@@ -4,13 +4,13 @@ function plotByCategory(canvasId, groupData, options={}) {
     var category = 'program';
     if (typeof groupData[0].score !== 'undefined') {
       category = 'score';
-    } else if (typeof groupData[0].occupation !== 'undefined') {
-      category = 'occupation';
+    } else if (typeof groupData[0].shortOccupation !== 'undefined') {
+      category = 'shortOccupation';
     }
 
     // Nest data
     var nestedData = d3.nest()
-      .key(function(d) { return d[category]; }).sortKeys(d3.ascending)
+      .key(function(d) { return d[category]; })
       .rollup(function(leaves) {
         return {
           'male': d3.sum(leaves, function(l) {
@@ -19,7 +19,7 @@ function plotByCategory(canvasId, groupData, options={}) {
           'female': d3.sum(leaves, function(l) {
             return l.sex == 'F' ? l.count : 0;
           })
-        }
+        };
       })
       .entries(groupData);
 
@@ -29,14 +29,19 @@ function plotByCategory(canvasId, groupData, options={}) {
     'graphHeight': 100,
     'marginLeft': 50,
     'marginRight': 50,
-    'marginTop': 10,
+    'marginTop': 15,
     'marginBottom': 20,
-    'gutter': 4
-  }
-  for (option in defaults) {
+    'gutter': 4,
+    'labels': 'even'
+  };
+  for (var option in defaults) {
     if (!options[option]) {
       options[option] = defaults[option];
     }
+  }
+
+  if (options.labels != 'even') {
+    options.marginBottom += 15;
   }
 
   var graphWallWidth = options.graphWidth - options.marginLeft - options.marginRight;
@@ -46,7 +51,7 @@ function plotByCategory(canvasId, groupData, options={}) {
   var scaleWidth = function(rawValue) { return rawValue * graphWallWidth; };
   var translateX = function(i) {
     return options.marginLeft + (i * barWidth * 2) + (options.gutter * (i+1));
-  }
+  };
   var maxValue = d3.max(nestedData, function(d) {
     return d3.max([d.value.female, d.value.male]);
   });
@@ -58,9 +63,6 @@ function plotByCategory(canvasId, groupData, options={}) {
 
   // Set up canvas variables
   var canvas = d3.select('#'+canvasId);
-  var testSVG = d3.select('#'+canvasId+' svg');
-  console.log(testSVG);
-  if (testSVG) console.log('Something here!');
   var svg = canvas.append('svg')
     .attr('viewBox', '0 0 '+options.graphWidth+' '+ options.graphHeight)
     .classed('svg-content', 'true');
@@ -80,10 +82,23 @@ function plotByCategory(canvasId, groupData, options={}) {
     .attr('transform', function(d,i) { return 'translate('+ translateX(i) +')'; });
 
   // Add category label
-  categories.append('text').text(function(d) { return d.key; })
+  var label = categories.append('text').text(function(d) { return d.key; })
+    .classed('small-label', true)
     .attr('x', barWidth)
-    .attr('y', options.graphHeight -  options.gutter)
-    .attr('text-anchor', 'middle');
+    .attr('text-anchor', 'middle')
+    .attr('y', function(d,i) {
+      var defaultY = options.graphHeight - options.gutter;
+      if ((options.labels == 'staggered') && (i % 2 === 0)) {
+         return defaultY - 15;
+      }
+      return defaultY;
+    });
+  if (options.labels == 'rotate') {
+    // Wrap text labels
+    label.attr('transform', 'rotate(45)')
+      .attr('text-anchor', 'start')
+      .attr('dx', 4);
+  }
 
   // Add female bar
   var fBar = categories.append('rect')
@@ -100,12 +115,17 @@ function plotByCategory(canvasId, groupData, options={}) {
 
   // Add female label
   categories.append('text').attr('text-anchor', 'middle')
-    .text(function(d) { return d.value.female; })
+    .text(function(d) {
+      if (category == 'shortOccupation') {
+        return Math.floor(d.value.female / 1000);
+      }
+      return d.value.female;
+    })
     .attr('x', barWidth/2)
     .attr('y', function(d) {
       return options.marginTop + graphWallHeight - scaleHeight(d.value.female) - options.gutter;
     })
-    .classed('small-label', true);
+    .classed('tiny-label', true);
 
   // Add male bar
   var mBar = categories.append('rect')
@@ -122,12 +142,17 @@ function plotByCategory(canvasId, groupData, options={}) {
 
   // Add male label
   categories.append('text').attr('text-anchor', 'middle')
-     .text(function(d) { return d.value.male; })
+     .text(function(d) {
+       if (category == 'shortOccupation') {
+         return Math.floor(d.value.male / 1000);
+       }
+       return d.value.male;
+     })
      .attr('x', barWidth + barWidth/2)
      .attr('y', function(d) {
        return options.marginTop + graphWallHeight - scaleHeight(d.value.male) - options.gutter;
      })
-     .classed('small-label', true);
+     .classed('tiny-label', true);
 
   // Add hover handlers
   svg.on('mousemove', function(d) {
@@ -151,18 +176,9 @@ function plotByCategory(canvasId, groupData, options={}) {
       .attr('y1', mouseY)
       .attr('y2', mouseY)
       .classed('line-highlight', true);
-    svg.append('text')
-      .classed('label-highlight', true)
-      .classed('small-label', true)
-      .text(-1 * Math.round(scaleHeight.invert(mouseY - options.marginTop - graphWallHeight)))
-      .attr('x', options.marginLeft + graphWallWidth)
-      .attr('y', mouseY);
   })
   .on('mouseout', function(d) {
     svg.selectAll('.line-highlight').remove();
     svg.selectAll('.label-highlight').remove();
   });
-
-  // Wrap text labels
-  svg.selectAll('text').call(wrapText, barWidth * 2);
 }
