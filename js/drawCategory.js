@@ -125,7 +125,7 @@ function plotByCategory(canvasId, groupData, options={}) {
     .attr('y', function(d) {
       return options.marginTop + graphWallHeight - scaleHeight(d.value.female) - options.gutter;
     })
-    .classed('small-label', true);
+    .classed('tiny-label', true);
 
   // Add male bar
   var mBar = categories.append('rect')
@@ -152,7 +152,7 @@ function plotByCategory(canvasId, groupData, options={}) {
      .attr('y', function(d) {
        return options.marginTop + graphWallHeight - scaleHeight(d.value.male) - options.gutter;
      })
-     .classed('small-label', true);
+     .classed('tiny-label', true);
 
   // Add hover handlers
   svg.on('mousemove', function(d) {
@@ -176,12 +176,6 @@ function plotByCategory(canvasId, groupData, options={}) {
       .attr('y1', mouseY)
       .attr('y2', mouseY)
       .classed('line-highlight', true);
-    svg.append('text')
-      .classed('label-highlight', true)
-      .classed('small-label', true)
-      .text(-1 * Math.round(scaleHeight.invert(mouseY - options.marginTop - graphWallHeight)))
-      .attr('x', options.marginLeft + graphWallWidth)
-      .attr('y', mouseY);
   })
   .on('mouseout', function(d) {
     svg.selectAll('.line-highlight').remove();

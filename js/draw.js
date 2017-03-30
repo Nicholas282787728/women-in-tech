@@ -1,38 +1,44 @@
 function wrapText(text, width) {
-  var spans = [];
   text.each(function() {
     var t = d3.select(this);
     var words = t.text().split(/\s+/).reverse(),
         word = '';
     var line = [],
         lineNum = 0,
-        lineHeight = 1.1;
+        lineHeight = 14;
     var x = t.attr('x'),
-        y = t.attr('y'),
+        y = parseFloat(t.attr('y')),
         dy = parseFloat(t.attr('dy')) || 0;
     var tspan = t.text(null).append('tspan')
           .classed('small-label', true)
           .attr('x', x).attr('text-anchor', 'middle')
-          .attr('y', y)
-          .attr('dy', dy +'em');
+          .attr('y', y);
 
-    while (word = words.pop()) {
+    while (words.length > 0) {
+      word = words.pop();
       line.push(word);
       tspan.text(line.join(" "));
-      if (tspan.node().getComputedTextLength() > width) {
+      if (tspan.node().getComputedTextLength() >= width) {
         line.pop();
         tspan.text(line.join(" "));
         line = [word];
+        lineNum++;
         tspan = t.append('tspan')
+          .classed('small-label', true)
           .attr('x', x).attr('text-anchor', 'middle')
-          .attr('y', y)
-          .attr('dy', ++lineNum * lineHeight);
+          .attr('y', y + lineNum * lineHeight);
+      }
+      // If only one word wraps, it never gets added above
+      if (words.length === 0 && lineNum > 0 && line.length == 1) {
+        tspan = t.append('tspan')
+          .classed('small-label', true)
+          .text(line.join(" "))
+          .attr('x', x).attr('text-anchor', 'middle')
+          .attr('y', y + lineNum * lineHeight);
+          console.log(line);
       }
     }
-
-    spans.push(tspan);
   });
-  return spans;
 }
 
 function drawPipe() {
@@ -43,7 +49,7 @@ function drawPipe() {
     'id': 'hs',
     'data': data.hs,
     'label': 'High School',
-    'description': 'AP Computer Science Tests Taken',
+    'description': 'Advanced Placement Computer Science Tests Taken',
     'male': d3.sum(data.hs, function(s) {
       return s.sex == 'M' ? s.count : 0;
     }),
@@ -56,7 +62,7 @@ function drawPipe() {
     'id': 'bs',
     'data': data.bs,
     'label': 'College',
-    'description': 'Tech Degrees Awarded',
+    'description': 'Computer Science, Computer Engineering, and Information Degrees Awarded',
     'male': d3.sum(data.bs, function(s) {
       return s.sex == 'M' ? s.count : 0;
     }),
@@ -69,7 +75,7 @@ function drawPipe() {
     'id': 'grad',
     'data': data.ms.concat(data.phd),
     'label': 'Graduate School',
-    'description': 'Tech Degrees Awarded',
+    'description': 'Computer Science, Computer Engineering, and Information Degrees Awarded',
     'male': d3.sum(data.ms.concat(data.phd), function(s) {
       return s.sex == 'M' ? s.count : 0;
     }),
@@ -82,7 +88,7 @@ function drawPipe() {
     'id': 'work',
     'data': data.job,
     'label': 'Workforce',
-    'description': 'People Employed in Computing',
+    'description': 'Employees in the U.S. Labor Statistics\' Computing Occupations',
     'male': d3.sum(data.hs, function(s) {
       return s.sex == 'M' ? s.count : 0;
     }),
@@ -140,9 +146,9 @@ function drawPipe() {
 
   // Add bottom label
   groups.append('text').text(function(d) { return d.description; })
-    .attr('text-anchor', 'middle')
+    .attr('text-anchor', 'middle').attr('alignment-baseline', 'middle')
     .attr('x', groupWidth / 2)
-    .attr('y', pipeHeight + 30);
+    .attr('y', pipeHeight + 20);
 
   // Add legend
   var legends = canvas.append('g')
@@ -221,7 +227,7 @@ function drawPipe() {
     // Pipe is offset by 40px
     var adjustedMouseY = realMouseY - 40; // use this for calculating
     if (adjustedMouseY > pipeHeight || adjustedMouseY < 0) {
-    //  resetLegend();
+     resetLegend();
       return;
     }
 

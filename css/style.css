@@ -35,6 +35,12 @@ body {
 
 h1, h2 { font-family: var(--heading-font-stack); }
 
+p {
+  font-size: 1.4em;
+  line-height: 1.5;
+}
+p + p { margin-top: 1em;}
+
 section {
   width: 80%;
   margin: auto;
@@ -49,9 +55,9 @@ section > div { flex: 1; }
 section h2 { margin-bottom: -0.5em; }
 
 .intro {
-  font-size: 1.2em;
+  font-size: 1.1em;
   width: 80%;
-  margin: 5vh auto;
+  margin: 1em auto;
 }
  aside {
    width: 80%;
@@ -99,7 +105,6 @@ a:hover, nav a:hover { color: rgb(142, 99, 182); }
 
 h1 {
   font-size: 3em;
-
 }
 
 .male { fill: rgb(22, 183, 199); }
@@ -108,6 +113,7 @@ h1 {
 
 .label { font-size: 1em; }
 .small-label { font-size: 0.7em; }
+.tiny-label { font-size: 0.5em; }
 .big-label { font-size: 2em; }
 
 .svg-container {
@@ -133,15 +139,12 @@ h1 {
 
 
 .line-primary { stroke: var(--font-color); }
-.line-highlight { stroke: yellow; }
-/*.label-highlight { fill: blue; }*/
-
-
-p {
-  font-size: 1.4em;
-  line-height: 1.5;
+.line-highlight {
+  stroke: var(--font-color);
+  stroke-width: 3;
+  alignment-baseline: 'middle';
 }
-p + p { margin-top: 1em;}
+/*.label-highlight { fill: blue; }*/
 
 .arrow-container{
   width: 100px;
@@ -163,7 +166,7 @@ p + p { margin-top: 1em;}
   top: 20px;
   left: 20px;
   z-index: 1;
-  display: table;
+  text-align: center;
 }
 
 .arrow:before{
@@ -177,10 +180,8 @@ p + p { margin-top: 1em;}
   left: 4px;
 }
 
-.arrow i.fa{
-  font-size: 30px;
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  color: var(--bg-color);
+.arrow img{
+  margin-top: 15px;
+  height: 30px;
+  width: 30px;
 }

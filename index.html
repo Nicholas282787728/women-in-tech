@@ -23,11 +23,12 @@
     <div>
       <h1>Women in Tech</h1>
       <p class='intro'>Let's face it: tech has a diversity problem. Women and other minorities earn fewer tech degrees, get fewer tech jobs, and leave companies and degree programs sooner than their white male colleagues, even as colleges and tech companies trumpet their commitment to diversity. Many companies blame this on the “leaky pipeline” of tech education, claiming that degree programs just aren't producing enough qualified minority candidates. But reality, as always, is more complex.</p>
+      <p class='intro'>Scroll to explore the tech education pipeline: high school students studying computer science, college and graduate students earning technical degrees, and employees working in tech.</p>
       <div id='pipes' class='svg-container' style='padding-bottom:21%'></div>
-      <p>The data here focuses on gender diversity, but ethnic diversity is also problematic—and women of color face the biggest obstacles of all. Take a look at the <a href='#resources'>resources list</a> for more on both gender and ethnic inclusivity.</p>
+      <p class='intro'>All the data presented here focuses on students and employees in the United States. We're showing the data on gender diversity, but we believe ethnic diversity is also problematic—and women of color face the biggest obstacles of all. All of our data sources are publicly available, and most include ethnic diversity stats, too—check the <a href='#resources'>resources list</a> for links to explore more.</p>
       <div class='arrow-container'>
         <div class='arrow'>
-          <i class='fa fa-2x fa-angle-down'></i>
+          <img src='arrow.svg' alt='Scroll Down to View More'>
         </div>
       </div>
     </div>
@@ -45,11 +46,10 @@
       <div class='flex-container'>
         <div style='flex:1'>
           <h2>AP Computer Science Test Takers<br>by Gender &amp; Year</h2>
-          <p class='small-label'>Data: AP Test Demographics for Computer Science; Source: College Board</p>
+          <p class='small-label'>Data: AP Test Demographics for Computer Science [Source: The College Board]</p>
           <div id='hs-year' class='svg-container' style='padding-bottom:65%'></div>
         </div>
         <div class='discussion-group' style='flex:1'>
-          <p>&nbsp;</p>
           <p>High school students can take the Advanced Placement Computer Science exam to earn college credit for high school coursework in computing. Recently, more of the students taking the exam are female, and their average score has increased. Boys are still more likely to take the test and to earn top scores, though, so there's still work to do.</p>
           <h2>AP Computer Science Scores by Gender</h2>
           <div id='hs-group' class='svg-container' style='padding-bottom:30%'></div>
@@ -60,8 +60,8 @@
   <aside>
     <h2>Expectations Affect Outcomes</h2>
     <p>Modern tech culture depends on genius.</p>
-    <p>We celebrate the ideal of the brilliant visionary or the naturally talented developer, even as we discuss the best ways to teach programming and design thinking. Consequently, when college students arrive in introductory computer science classes, the students who get the most praise are the ones who are already good at basic programming tasks—mostly, young white men who were exposed to it in high school (or earlier). Students without prior experience feel left behind, even in introductory classes. Couple that with the other-ness of being the only girl in the room, and it's no wonder that young women are disproportionately likely to drop a computer science major or minor.</p>
-    <p>These expectations start early: studies show that students as young as sixth grade already expect boys to be better computer users than girls are. But computer science curricula that emphasize collaboration and applied problem solving, rather than computation and efficiency, counterbalance these expectations, attracting and retaining more female students. </p>
+    <p>We celebrate the ideal of the creative visionary and the brilliant developer, even as we discuss the best ways to teach programming and design thinking to people who don't have that natural spark. Consequently, when college students arrive in introductory computer science classes, the students who get the most praise are the ones who are already know how to program—mostly, young white men who were exposed to codign in high school (or earlier). Students without prior experience feel left behind, even in introductory classes.</p>
+    <p>Couple that with the awkwardness of being the outnumbered by at least 7-to-1 in a large lecture hall, and it's no wonder that young women are disproportionately likely to drop a computer science major or minor.</p>
   </aside>
 
   <section id='bs'>
@@ -70,7 +70,7 @@
       <div class='flex-container'>
         <div style='flex:1'>
           <h2>Bachelor's Degrees by Gender &amp; Year</h2>
-          <p class='small-label'>Data: Bachelor's degrees awarded in Computer Science, Computer Engineering, and Information<br>Source: the Taulbee Survey</p>
+          <p class='small-label'>Data: Bachelor's degrees awarded in Computer Science, Computer Engineering, and Information [Source: the Taulbee Survey]</p>
           <div id='bs-year' class='svg-container' style='padding-bottom:65%'></div>
         </div>
         <div class='discussion-group' style='flex:1'>
@@ -84,6 +84,7 @@
   <aside>
     <h2>Learning How to Tech</h2>
     <p>Information science bachelor's degrees show the same gendered split that everything else does, but information science graduate degrees don't. Goal-oriented vs. process-oriented education might be why--discuss.</p>
+    <p>These expectations start early: studies show that students as young as sixth grade already expect boys to be better computer users than girls are. But computer science curricula that emphasize collaboration and applied problem solving, rather than computation and efficiency, counterbalance these expectations, attracting and retaining more female students.</p>
   </aside>
 
   <section id='grad'>
@@ -92,7 +93,7 @@
       <div class='flex-container'>
         <div style='flex:1'>
           <h2>Graduate Degrees by Gender &amp; Year</h2>
-          <p class='small-label'>Data: Graduate degrees awarded in Computer Science, Computer Engineering, and Information<br>Source: the Taulbee Survey</p>
+          <p class='small-label'>Data: Graduate degrees awarded in Computer Science, Computer Engineering, and Information [Source: The Taulbee Survey]</p>
           <div id='grad-year' class='svg-container' style='padding-bottom:65%'></div>
         </div>
         <div class='discussion-group' style='flex:1'>
@@ -115,6 +116,7 @@
       <div class='flex-container'>
         <div style='flex:1'>
           <h2>Tech Employment by Gender &amp; Year</h2>
+          <p class='small-label'>Data: Detailed Employment by Gender &amp; Occupation [Source: U.S. Bureau of Labor Statistics]</p>
           <div id='work-year' class='svg-container' style='padding-bottom:65%'>
         </div>
         </div>
@@ -140,8 +142,6 @@
   </section>
 
 <script src='js/d3.min.js'></script>
-<script src="https://use.fontawesome.com/4c4e46d5a5.js"></script>
-
 <script src='js/drawCategory.js'></script>
 <script src='js/drawYears.js'></script>
 <script src='js/draw.js'></script>

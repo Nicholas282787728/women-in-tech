@@ -11,7 +11,7 @@ var data = {
 var graphOptions = {
   'hs-group': {
     graphWidth: 500,
-    graphHeight: 150
+    graphHeight: 200
   },
   'hs-year': {
     'graphWidth': 600,
@@ -19,7 +19,7 @@ var graphOptions = {
   },
   'bs-group': {
     graphWidth: 500,
-    graphHeight: 150
+    graphHeight: 200
   },
   'bs-year': {
     'graphWidth': 600,
@@ -27,7 +27,7 @@ var graphOptions = {
   },
   'grad-group': {
     graphWidth: 500,
-    graphHeight: 150
+    graphHeight: 200
   },
   'grad-year': {
     'graphWidth': 600,
@@ -35,7 +35,9 @@ var graphOptions = {
   },
   'work-group': {
     graphWidth: 500,
-    graphHeight: 150
+    graphHeight: 150,
+    marginRight: 10,
+    labels: 'staggered'
   },
   'work-year': {
     'graphWidth': 600,
@@ -86,7 +88,6 @@ function combineData() {
 
     var cleaned_job_data = [];
     raw_job_data.forEach(function(d) {
-      console.log(d);
       cleaned_job_data.push({
         year: +d.Year,
         count: parseInt(d.NumEmployed),
@@ -116,7 +117,6 @@ function combineData() {
         count: Math.floor(d.count * (1 - d.pctFemale)),
         shortOccupation: d.shortOccupation
       });
-      console.log(d.count);
     });
 
     drawPipe();
@@ -126,7 +126,7 @@ function combineData() {
     plotByYear('bs-year', data.bs);
     plotByCategory('grad-group', data.ms.concat(data.phd));
     plotByYear('grad-year', data.ms.concat(data.phd));
-    plotByCategory('work-group', data.job, {'labels': 'staggered'});
+    plotByCategory('work-group', data.job, graphOptions['work-group']);
     plotByYear('work-year', data.job);
   };
 }
