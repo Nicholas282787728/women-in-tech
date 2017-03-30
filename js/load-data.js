@@ -86,11 +86,13 @@ function combineData() {
 
     var cleaned_job_data = [];
     raw_job_data.forEach(function(d) {
+      console.log(d);
       cleaned_job_data.push({
         year: +d.Year,
-        count: parseInt(d.NumEmployed) * 1000,
+        count: parseInt(d.NumEmployed),
         occupation: d.Type,
-        pctFemale: +d.PctFemale
+        pctFemale: +d.PctFemale,
+        shortOccupation: d.ShortType
       });
     });
 
@@ -104,14 +106,17 @@ function combineData() {
         year: d.year,
         occupation: d.occupation,
         sex: 'F',
-        count: Math.ceil(d.count * d.pctFemale)
+        count: Math.ceil(d.count * d.pctFemale),
+        shortOccupation: d.shortOccupation
       });
       data.job.push({
         year: d.year,
         occupation: d.occupation,
         sex: 'M',
-        count: Math.floor(d.count * (1 - d.pctFemale))
+        count: Math.floor(d.count * (1 - d.pctFemale)),
+        shortOccupation: d.shortOccupation
       });
+      console.log(d.count);
     });
 
     drawPipe();
@@ -121,7 +126,7 @@ function combineData() {
     plotByYear('bs-year', data.bs);
     plotByCategory('grad-group', data.ms.concat(data.phd));
     plotByYear('grad-year', data.ms.concat(data.phd));
-    plotByCategory('work-group', data.job);
+    plotByCategory('work-group', data.job, {'labels': 'staggered'});
     plotByYear('work-year', data.job);
   };
 }

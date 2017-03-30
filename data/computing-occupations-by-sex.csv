@@ -1,56 +1,56 @@
-Year,NumEmployed,PctFemale,Type
-2015,"24,000",[nr],Computer and Information Research Scientists
-2015,"552,000",0.342,Computer systems analysts
-2015,"70,000",0.197,Information security analysts
-2015,"480,000",0.210,Computer programmers
-2015,"1,353,000",0.179,"Software developers, applications and systems software"
-2015,"204,000",0.343,Web developers
-2015,"475,000",0.264,Computer support specialists
-2015,"93,000",0.380,Database administrators
-2015,"218,000",0.159,Network and computer systems administrators
-2015,"114,000",0.121,Computer network architects
-2015,"547,000",0.243,"Computer occupations, all other"
-2014,"29,000",[nr],Computer and Information Research Scientists
-2014,"511,000",0.342,Computer systems analysts
-2014,"68,000",0.181,Information security analysts
-2014,"509,000",0.214,Computer programmers
-2014,"1,235,000",0.198,"Software developers, applications and systems software"
-2014,"220,000",0.352,Web developers
-2014,"524,000",0.266,Computer support specialists
-2014,"108,000",0.280,Database administrators
-2014,"205,000",0.191,Network and computer systems administrators
-2014,"123,000",0.124,Computer network architects
-2014,"512,000",0.231,"Computer occupations, all other"
-2013,"18,000",[nr],Computer and information research scientists
-2013,"534,000",0.349,Computer systems analysts
-2013,"48,000",[nr],Information security analysts
-2013,"489,000",0.230,Computer programmers
-2013,"1,103,000",0.197,"Software developers, applications and systems software"
-2013,"192,000",0.395,Web developers
-2013,"517,000",0.290,Computer support specialists
-2013,"98,000",0.374,Database administrators
-2013,"205,000",0.173,Network and computer systems administrators
-2013,"135,000",0.075,Computer network architects
-2013,"410,000",0.228,"Computer occupations, all other"
-2012,"29,000",[nr],Computer and information research scientists
-2012,"499,000",0.309,Computer systems analysts
-2012,"52,000",0.151,Information security analysts
-2012,"480,000",0.225,Computer programmers
-2012,"1,084,000",0.197,"Software developers, applications and systems software"
-2012,"190,000",0.337,Web developers
-2012,"476,000",0.271,Computer support specialists
-2012,"101,000",0.366,Database administrators
-2012,"226,000",0.250,Network and computer systems administrators
-2012,"127,000",0.081,Computer network architects
-2012,"341,000",0.244,"Computer occupations, all other"
-2011,"20,000",[nr],Computer and information research scientists
-2011,"447,000",0.339,Computer systems analysts
-2011,"44,000",[nr],Information security analysts
-2011,"459,000",0.208,Computer programmers
-2011,"1,044,000",0.190,"Software developers, applications and systems software"
-2011,"182,000",0.386,Web developers
-2011,"461,000",0.263,Computer support specialists
-2011,"134,000",0.373,Database administrators
-2011,"233,000",0.228,Network and computer systems administrators
-2011,"98,000",0.114,Computer network architects
-2011,"306,000",0.217,"Computer occupations, all other"
+Year,NumEmployed,PctFemale,Type,ShortType
+2015,24000,[nr],Computing Researchers,Researchers
+2015,552000,0.342,Systems Analysts,Systems
+2015,70000,0.197,Security Analysts,Security
+2015,480000,0.21,Programmers,Programming
+2015,1353000,0.179,Software developers,Software
+2015,204000,0.343,Web developers,Web
+2015,475000,0.264,Computer support specialists,Support
+2015,93000,0.38,Database administrators,Database
+2015,218000,0.159,System Administrators,Sysadmins
+2015,114000,0.121,Network Architects,Networking
+2015,547000,0.243,Other,Other
+2014,29000,[nr],Computing Researchers,Researchers
+2014,511000,0.342,Systems Analysts,Systems
+2014,68000,0.181,Security Analysts,Security
+2014,509000,0.214,Programmers,Programming
+2014,1235000,0.198,Software developers,Software
+2014,220000,0.352,Web developers,Web
+2014,524000,0.266,Computer support specialists,Support
+2014,108000,0.28,Database administrators,Database
+2014,205000,0.191,System Administrators,Sysadmins
+2014,123000,0.124,Network Architects,Networking
+2014,512000,0.231,Other,Other
+2013,18000,[nr],Computing Researchers,Researchers
+2013,534000,0.349,Systems Analysts,Systems
+2013,48000,[nr],Security Analysts,Security
+2013,489000,0.23,Programmers,Programming
+2013,1103000,0.197,Software developers,Software
+2013,192000,0.395,Web developers,Web
+2013,517000,0.29,Computer support specialists,Support
+2013,98000,0.374,Database administrators,Database
+2013,205000,0.173,System Administrators,Sysadmins
+2013,135000,0.075,Network Architects,Networking
+2013,410000,0.228,Other,Other
+2012,29000,[nr],Computing Researchers,Researchers
+2012,499000,0.309,Systems Analysts,Systems
+2012,52000,0.151,Security Analysts,Security
+2012,480000,0.225,Programmers,Programming
+2012,1084000,0.197,Software developers,Software
+2012,190000,0.337,Web developers,Web
+2012,476000,0.271,Computer support specialists,Support
+2012,101000,0.366,Database administrators,Database
+2012,226000,0.25,System Administrators,Sysadmins
+2012,127000,0.081,Network Architects,Networking
+2012,341000,0.244,Other,Other
+2011,20000,[nr],Computing Researchers,Researchers
+2011,447000,0.339,Systems Analysts,Systems
+2011,44000,[nr],Security Analysts,Security
+2011,459000,0.208,Programmers,Programming
+2011,1044000,0.19,Software developers,Software
+2011,182000,0.386,Web developers,Web
+2011,461000,0.263,Computer support specialists,Support
+2011,134000,0.373,Database administrators,Database
+2011,233000,0.228,System Administrators,Sysadmins
+2011,98000,0.114,Network Architects,Networking
+2011,306000,0.217,Other,Other

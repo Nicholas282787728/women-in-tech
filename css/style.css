@@ -46,6 +46,7 @@ section {
 }
 aside + section { padding-top: 10vh; }
 section > div { flex: 1; }
+section h2 { margin-bottom: -0.5em; }
 
 .intro {
   font-size: 1.2em;
@@ -58,7 +59,10 @@ section > div { flex: 1; }
    padding: 10vh 5vw;
    border: 3px solid var(--font-color);
  }
- aside h2 { text-align: center; }
+ aside h2 {
+   margin-bottom: 2em;
+   text-align: center;
+ }
 
 nav {
   position: fixed;
@@ -102,6 +106,7 @@ h1 {
 .female { fill: rgb(142, 99, 182); }
 .bar { stroke: black; }
 
+.label { font-size: 1em; }
 .small-label { font-size: 0.7em; }
 .big-label { font-size: 2em; }
 
@@ -115,6 +120,7 @@ h1 {
     overflow: hidden;
     margin-top: 4vh;
 }
+.small-label + .svg-container { margin-top: 2vh; }
 .svg-content {
     display: inline-block;
     position: absolute;
@@ -131,7 +137,6 @@ h1 {
 /*.label-highlight { fill: blue; }*/
 
 
-h2 { margin-bottom: 2em;}
 p {
   font-size: 1.4em;
   line-height: 1.5;

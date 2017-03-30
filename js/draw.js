@@ -1,4 +1,5 @@
 function wrapText(text, width) {
+  var spans = [];
   text.each(function() {
     var t = d3.select(this);
     var words = t.text().split(/\s+/).reverse(),
@@ -28,7 +29,10 @@ function wrapText(text, width) {
           .attr('dy', ++lineNum * lineHeight);
       }
     }
+
+    spans.push(tspan);
   });
+  return spans;
 }
 
 function drawPipe() {
@@ -154,7 +158,7 @@ function drawPipe() {
     .classed('small-label', true).classed('female', true)
     .attr('x', groupWidth * overviewData.length + 54)
     .attr('text-anchor', 'middle')
-    .attr('y', 20)
+    .attr('y', pipeHeight / 4)
     .attr('alignment-baseline', 'middle');
   legends.append('text').classed('small-label', true).classed('female', true)
     .text('Female')
@@ -174,7 +178,7 @@ function drawPipe() {
     .classed('small-label', true).classed('male', true)
     .attr('x', groupWidth * overviewData.length + 54)
     .attr('text-anchor', 'middle')
-    .attr('y', pipeHeight/2 + 40)
+    .attr('y', pipeHeight*3 /4)
     .attr('alignment-baseline', 'middle');
   legends.append('text').classed('small-label', true).classed('male', true)
     .text('Male')
@@ -245,5 +249,7 @@ document.addEventListener('scroll', function() {
   var arrow = document.querySelector('.arrow-container');
   if (document.body.scrollTop < arrow.offsetTop) {
     arrow.style.opacity = 1 - (document.body.scrollTop / arrow.offsetTop);
+  } else {
+    arrow.style.opacity = 0;
   }
 });
