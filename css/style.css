@@ -35,9 +35,11 @@ body {
 
 h1, h2 { font-family: var(--heading-font-stack); }
 
-p { line-height: 1.5; }
+p {
+  line-height: 1.5;
+  font-size: 1.4em;
+}
 p + p { margin-top: 1em;}
-aside p { font-size: 1.4em; }
 
 section {
   width: 80%;
