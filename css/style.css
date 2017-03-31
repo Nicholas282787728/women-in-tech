@@ -20,10 +20,10 @@ html {
   padding: 0;
 }
 * + section * {
-  margin-top: 1em;
+  margin-top: 1rem;
 }
 .flex-container * + * {
-  margin-left: 1em;
+  margin-left: 1rem;
 }
 
 body {
@@ -34,6 +34,12 @@ body {
 }
 
 h1, h2 { font-family: var(--heading-font-stack); }
+
+p {
+  line-height: 1.5;
+  font-size: 1.4em;
+}
+p + p { margin-top: 1em;}
 
 section {
   width: 80%;
@@ -47,10 +53,11 @@ section {
 aside + section { padding-top: 10vh; }
 section > div { flex: 1; }
 
+
 .intro {
-  font-size: 1.2em;
+  font-size: 1.1em;
   width: 80%;
-  margin: 5vh auto;
+  margin: 1em auto;
 }
  aside {
    width: 80%;
@@ -58,7 +65,10 @@ section > div { flex: 1; }
    padding: 10vh 5vw;
    border: 3px solid var(--font-color);
  }
- aside h2 { text-align: center; }
+ aside h2 {
+   margin-bottom: 2em;
+   text-align: center;
+ }
 
 nav {
   position: fixed;
@@ -68,7 +78,7 @@ nav {
   color: var(--bg-color);
   min-height: 8vh;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -95,14 +105,16 @@ a:hover, nav a:hover { color: rgb(142, 99, 182); }
 
 h1 {
   font-size: 3em;
-
 }
 
 .male { fill: rgb(22, 183, 199); }
 .female { fill: rgb(142, 99, 182); }
 .bar { stroke: black; }
 
+.label { font-size: 1em; }
 .small-label { font-size: 0.7em; }
+.tiny-label { font-size: 0.5em; }
+.big-label { font-size: 2em; }
 
 .svg-container {
     display: inline-block;
@@ -114,6 +126,7 @@ h1 {
     overflow: hidden;
     margin-top: 4vh;
 }
+.small-label + .svg-container { margin-top: 2vh; }
 .svg-content {
     display: inline-block;
     position: absolute;
@@ -126,14 +139,70 @@ h1 {
 
 
 .line-primary { stroke: var(--font-color); }
-.line-secondary { stroke: var(--font-secondary); }
-.line-highlight { stroke: yellow; }
-.label-highlight { fill: blue; }
-
-
-h2 { margin-bottom: 2em;}
-p {
-  font-size: 1.4em;
-  line-height: 1.5;
+.line-highlight {
+  stroke: var(--font-color);
+  stroke-width: 3;
+  alignment-baseline: 'middle';
 }
-p + p { margin-top: 1em;}
+/*.label-highlight { fill: blue; }*/
+
+.arrow-container{
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  position: fixed;
+  bottom: 25px;
+  left: 0;
+  right: 0;
+}
+
+.arrow{
+  fill: none;
+  width: 60px;
+  height: 60px;
+  background: rgb(182, 133, 226);
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+  text-align: center;
+}
+
+.arrow:before{
+  width: 52px;
+  height: 52px;
+  content: "";
+  border: 2px solid var(--bg-color);
+  border-radius: 50%;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+
+.arrow img{
+  margin-top: 15px;
+  height: 30px;
+  width: 30px;
+}
+
+#resources ul {
+  text-align: left;
+  width: 80%;
+  margin: auto;
+}
+
+#resources table {
+  margin: 1em auto;
+}
+th, td { padding: 0.2em 0.5em; }
+
+footer {
+  height: 3em;
+}
+
+table { border-collapse: collapse; }
+
+tbody tr:hover {
+  background-color: rgb(216, 210, 221);
+}

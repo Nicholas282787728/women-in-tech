@@ -10,7 +10,7 @@ function plotByYear(canvasId, groupData) {
         'female': d3.sum(leaves, function(l) {
           return l.sex == 'F' ? l.count : 0;
         })
-      }
+      };
     })
     .entries(groupData);
 
@@ -27,9 +27,9 @@ function plotByYear(canvasId, groupData) {
     'marginRight': 50,
     'marginTop': 10,
     'marginBottom': 50
-  }
+  };
   var options = graphOptions[canvasId];
-  for (option in defaults) {
+  for (var option in defaults) {
     if (!options[option]) {
       options[option] = defaults[option];
     }
@@ -136,9 +136,9 @@ function plotByYear(canvasId, groupData) {
     });
 
   // Add click handlers
-  bars.on('click', function(d) {
-    var group = canvasId.split('-')[0];
-    plotByCategory(group+'-group',
-      groupData.filter(function(y) { return y.year == d.key; }));
-  })
+  // bars.on('click', function(d) {
+  //   var group = canvasId.split('-')[0];
+  //   plotByCategory(group+'-group',
+  //     groupData.filter(function(y) { return y.year == d.key; }));
+  // });
 }

@@ -3,7 +3,6 @@
 <head>
     <title>Women in Tech</title>
     <meta charset='utf-8'>
-    <script src='js/d3.min.js'></script>
     <link rel='stylesheet' href='css/style.css'>
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.020/css/hack.min.css">
@@ -23,9 +22,15 @@
   <section id='overview'>
     <div>
       <h1>Women in Tech</h1>
-      <p class='intro'>Let's face it: tech has a diversity problem. Women and minorities earn fewer tech degrees, get fewer tech jobs, and leave companies and degree programs sooner than their white male colleagues, even as colleges and tech companies trumpet their commitment to diversity. Many companies blame this on the “leaky pipeline” of tech education, claiming that degree programs just aren't producing enough qualified minority candidates. But reality, as always, is more complex.</p>
+      <p class='intro'>Let's face it: tech has a diversity problem. Women and other minorities earn fewer tech degrees, get fewer tech jobs, and leave companies and degree programs sooner than their white male colleagues, even as colleges and tech companies trumpet their commitment to diversity. Many companies blame this on the “leaky pipeline” of tech education, claiming that degree programs just aren't producing enough qualified minority candidates. But reality, as always, is more complex.</p>
+      <p class='intro'>Scroll to explore the tech education pipeline: high school students studying computer science, college and graduate students earning technical degrees, and employees working in tech.</p>
       <div id='pipes' class='svg-container' style='padding-bottom:21%'></div>
-      <p>The data here focuses on gender diversity, but ethnic diversity is also problematic—and women of color face the biggest obstacles of all. Take a look at the <a href='#resources'>resources list</a> for more on both gender and ethnic inclusivity.</p>
+      <p class='intro'>All the data presented here focuses on students and employees in the United States. We're showing the data on gender diversity, but we believe ethnic diversity is also problematic—and women of color face the biggest obstacles of all. All of our data sources are publicly available, and most include ethnic diversity stats, too—check the <a href='#resources'>resources list</a> for links to explore more.</p>
+      <div class='arrow-container'>
+        <div class='arrow'>
+          <img src='arrow.svg' alt='Scroll Down to View More'>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -38,12 +43,16 @@
   <section id='hs'>
     <div>
       <h1>High School</h1>
+      <p>High school students can take the Advanced Placement Computer Science exam to earn college credit for high school coursework in computing. Recently, more of the students taking the exam are female, and their average score has increased. Boys are still more likely to take the test and to earn top scores, though, so there's still work to do.</p>
       <div class='flex-container'>
-        <div id='hs-year' class='svg-container' style='flex:1; padding-bottom:40%'></div>
+        <div style='flex:1'>
+          <h2>AP Computer Science Test Takers<br>by Gender &amp; Year</h2>
+          <p class='small-label'>Data: AP Test Demographics for Computer Science [Source: <a href="https://research.collegeboard.org/programs/ap/data">The College Board</a>]</p>
+          <div id='hs-year' class='svg-container' style='padding-bottom:65%'></div>
+        </div>
         <div class='discussion-group' style='flex:1'>
-          <p>High school students can take the Advanced Placement Computer Science exam to earn college credit for high school coursework in computing. Recently, more of the students taking the exam are female, and their average score has increased. Boys are still more likely to take the test and to earn top scores, though, so there's still work to do.</p>
-          <p>Click on a year to view that year's score distribution.</p>
-          <div id='hs-group' class='svg-container' style='padding-bottom:30%'></div>
+          <h2>AP Computer Science Scores by Gender</h2>
+          <div id='hs-group' class='svg-container' style='padding-bottom:70%'></div>
         </div>
     </div>
   </section>
@@ -51,34 +60,46 @@
   <aside>
     <h2>Expectations Affect Outcomes</h2>
     <p>Modern tech culture depends on genius.</p>
-    <p>We celebrate the ideal of the brilliant visionary or the naturally talented developer, even as we discuss the best ways to teach programming and design thinking. Consequently, when college students arrive in introductory computer science classes, the students who get the most praise are the ones who are already good at basic programming tasks—mostly, young white men who were exposed to it in high school (or earlier). Students without prior experience feel left behind, even in introductory classes. Couple that with the other-ness of being the only girl in the room, and it's no wonder that young women are disproportionately likely to drop a computer science major or minor.</p>
-    <p>These expectations start early: studies show that students as young as sixth grade already expect boys to be better computer users than girls are. But computer science curricula that emphasize collaboration and applied problem solving, rather than computation and efficiency, counterbalance these expectations, attracting and retaining more female students. </p>
+    <p>We celebrate the ideal of the creative visionary and the brilliant developer, even as we discuss the best ways to teach programming and design thinking to people who don't have that natural spark. Consequently, when college students arrive in introductory computer science classes, the students who get the most praise are the ones who are already know how to program—mostly, young white men who were exposed to codign in high school (or earlier). Students without prior experience feel left behind, even in introductory classes.</p>
+    <p>Couple that with the awkwardness of being the outnumbered by at least 7-to-1 in a large lecture hall, and it's no wonder that young women are disproportionately likely to drop a computer science major or minor.</p>
   </aside>
 
   <section id='bs'>
     <div>
       <h1>College</h1>
+      <p>The number of degrees awarded in computer engineering, computer science, and information science and technology has nearly doubled in the last five years. Information science has seen the greatest increase, both in overall graduates and in the proportion of female graduates.</p>
       <div class='flex-container'>
-        <div id='bs-year' class='svg-container' style='flex:1; padding-bottom:40%'></div>
+        <div style='flex:1'>
+          <h2>Bachelor's Degrees by Gender &amp; Year</h2>
+          <p class='small-label'>Data: Bachelor's degrees awarded in Computer Science, Computer Engineering, and Information [Source: <a href="http://cra.org/resources/taulbee-survey/">the Taulbee Survey</a>]</p>
+          <div id='bs-year' class='svg-container' style='padding-bottom:65%'></div>
+        </div>
         <div class='discussion-group' style='flex:1'>
-          <p>The number of degrees awarded in computer engineering, computer science, and information science and technology has nearly doubled in the last five years. Information science has seen the greatest increase, both in overall graduates and in the proportion of female graduates.</p>
-          <div id='bs-group' class='svg-container' style='padding-bottom:30%'></div>
+          <h2>Bachelor's Degrees by Gender &amp; Department</h2>
+          <div id='bs-group' class='svg-container' style='padding-bottom:70%'></div>
         </div>
     </div>
   </section>
 
   <aside>
     <h2>Learning How to Tech</h2>
+    <p>The first computers were women, not machines, who performed computations. When mechanical computers were first introduced, many of the people who used them were still female, and in 1984 women made up nearly 40% of computer science graduates. Now, that number is around 18%.</p>
+    <p>Computer science curricula that emphasize collaboration and applied problem solving, rather than computation and efficiency, seem promising in attracting and retaining more female students. Fewer women drop courses that use collaborative techniques like pair programming, and female enrollment is higher in courses that emphasize community-based problem solving.</p>
   </aside>
 
   <section id='grad'>
     <div>
       <h1>Graduate School</h1>
+      <p>Uniquely among tech degrees, graduate degrees in information science and technology are awarded almost equally to men and women. There are several plausible explanations: they're the most likely to be found in a professional school that emphasizes interdisciplinarity and applied problem-solving; they're also frequently found in library schools, which are overwhelmingly female. This provides an approachable introduction to skills like database design or web development for women who may not have had much tech exposure in their undergraduate program.</p>
       <div class='flex-container'>
-        <div id='grad-year' class='svg-container' style='flex:1; padding-bottom:40%'></div>
+        <div style='flex:1'>
+          <h2>Graduate Degrees by Gender &amp; Year</h2>
+          <p class='small-label'>Data: Graduate degrees awarded in Computer Science, Computer Engineering, and Information [Source: <a href="http://cra.org/resources/taulbee-survey/">The Taulbee Survey</a>]</p>
+          <div id='grad-year' class='svg-container' style='padding-bottom:65%'></div>
+        </div>
         <div class='discussion-group' style='flex:1'>
-          <p>Discussion here</p>
-          <div id='grad-group' class='svg-container' style='padding-bottom:30%'></div>
+          <h2>Graduate Degrees by Gender &amp; Department</h2>
+          <div id='grad-group' class='svg-container' style='padding-bottom:70%'></div>
         </div>
     </div>
   </section>
@@ -92,27 +113,114 @@
   <section id='work'>
     <div>
       <h1>Workforce</h1>
+      <p>In the last few years, more organizations are realizing the advantages of diversity: with more backgrounds and perspectives to draw on, teams are better at creatively solving problems for large and diverse audiences. Despite all this discussion, the numbers haven't changed much. While there are more women working in tech, that's because there are more people working in tech, and the ratio of women to men is still small.</p>
+      <p>According to federal employment statistics, web development and database administration are the computing occupations closest to gender parity, with around 33% female employees in each. More granular reports, like the annual <a href="https://stackoverflow.com/insights/survey/2017#developer-profile-developer-role-and-gender">Stack Overflow Developer Survey</a>, suggest that data science and other statistics-based roles are also relatively open to women.</p>
       <div class='flex-container'>
-        <div id='work-year' class='svg-container' style='flex:1; padding-bottom:40%'></div>
+        <div style='flex:1'>
+          <h2>Tech Employment by Gender &amp; Year</h2>
+          <p class='small-label'>Data: Detailed Employment by Gender &amp; Occupation [Source: <a href="https://www.bls.gov/cps/tables.htm">U.S. Bureau of Labor Statistics</a>]</p>
+          <div id='work-year' class='svg-container' style='padding-bottom:65%'>
+        </div>
+        </div>
         <div class='discussion-group' style='flex:1'>
-          <p>Discussion here</p>
-          <div id='work-group' class='svg-container' style='padding-bottom:30%'></div>
+          <h2>Tech Employment by Gender &amp; Specialty</h2>
+          <p class='label'>(in thousands of employees)</p>
+          <div id='work-group' class='svg-container' style='padding-bottom:70%'></div>
         </div>
     </div>
   </section>
 
   <aside>
     <h2>How to Hire Qualified Women</h2>
+    <p>If companies want to hire more qualified women, they need to hire more women.</p>
+    <p>Sure, it sounds simplistic. But there are women who are perfectly qualified to work in tech who are looking for work or who are employed in a job unrelated to their technical training. The traditional education pipeline isn't perfect, but it's not the only way people prepare themselves for careers in tech.</p>
+    <p>Yes, it's easier to hire people referred by colleagues who've proven themselves already. Yes, it can seem risky to hire the woman who might not fit the company's culture. But aren't we trying to make the world better? Since when is that easy or safe?</p>
   </aside>
 
   <section id='resources'>
-    <h1>Resources</h1>
+    <div>
+      <h1>Resources</h1>
+      <h2>Data Sources</h2>
+      <ul>
+        <li><strong>High School</strong>: <a href="https://research.collegeboard.org/programs/ap/data">AP Data</a> from the College Board (CS exam scores by gender extracted from each year's National Report)</li>
+        <li><strong>College &amp; Graduate School</strong>: <a href="http://cra.org/resources/taulbee-survey/">The Taulbee Survey</a> from the Computing Research Association (Degrees awarded extracted from PDF reports)</li>
+        <li><strong>Workforce</strong>: <a href="https://www.bls.gov/cps/tables.htm">Current Population Survey</a> from the United States Bureau of Labor Statistics (Computing occupations extracted from Table 11)</li>
+      </ul>
+
+      <h2>Media Coverage</h2>
+      <ul>
+        <li><a href="https://www.entrepreneur.com/article/289293">Why Gender Diversity in Tech Matters</a>—Entrepreneur</li>
+        <li><a href="https://www.theatlantic.com/business/archive/2017/03/melinda-gates-tech/519762/">Melinda Gates on Gender Diversity in Tech</a>—The Atlantic</li>
+        <li><a href="https://www.google.com/url?rct=j&sa=t&url=https://www.americanprogress.org/issues/race/reports/2017/03/29/429424/supply-diverse-workers-tech-silicon-valley-lacking-diversity/&ct=ga&cd=CAAYADIaM2RmNjU0MjNkZjFhMGM4NDpjb206ZW46VVM&usg=AFQjCNFz-Qs1evSYKtbDXEVdM_PTlS9Sow">There Is a Supply of Diverse Workers in Tech, So Why Is Silicon Valley So Lacking in Diversity?</a>—Center for American Progress</li>
+        <li><a href="http://gizmodo.com/the-alarming-downsides-to-tech-industry-diversity-repor-1789797486">The Alarming Downsides to Tech Industry Diversity Reports</a>—Gizmodo</li>
+        <li><a href="http://www.inc.com/salvador-rodriguez/tech-diversity-2016.html">Tech Diversity Took Steps Back in 2016, Expects a Challenging 2017</a>—Inc.</li>
+        <li><a href="http://thecooperreview.com/diversity-in-tech-report/">Honest Diversity in Tech Report</a> [Satire]—The Cooper Report</li>
+      </ul>
+
+      <h2>Tech Company Diversity Reports</h2>
+      <p>Many tech companies have committed to fostering a diverse and inclusive workforce, and they publish demographic data to measure their progress. In addition, companies in the United States with more than 100 employees are required to file EEO-1 reports describing the demographics of their employees. The <a href="http://opendiversitydata.org/">Open Diversity Data</a> project collects links to these reports; here's a selection.</p>
+      <table id="diversity-reports">
+        <thead><tr>
+          <th></th>
+          <th>Corporate Diversity Website</th>
+          <th>Federal EEO-1 Report</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <th>Amazon</th>
+            <td><a href="https://www.amazon.com/gp/browse.html?node=10080092011&sa-no-redirect=1&pldnSite=1">Website</a></td>
+            <td><a href="https://images-na.ssl-images-amazon.com/images/G/01/DiversityCampaign2016_Q3/EEO-1_2016_consolidated._V525968886_.pdf">EEO-1</a></td>
+          </tr>
+          <tr>
+            <th>Apple</th>
+            <td><a href="http://www.apple.com/diversity/">Website</a></td>
+            <td><a href="http://images.apple.com/diversity/pdf/2016-EEO-1-Consolidated-Report.pdf">EEO-1</td>
+          </tr>
+          <tr>
+            <th>Facebook</th>
+            <td><a href="http://newsroom.fb.com/news/2016/07/facebook-diversity-update-positive-hiring-trends-show-progress/">Website</a></td>
+            <td><a href="https://fbnewsroomus.files.wordpress.com/2016/07/eeo-1_2015.png">EEO-1</a></td>
+          </tr>
+          <tr>
+            <th>Google</th>
+            <td><a href="https://www.google.com/diversity/">Website</a></td>
+            <td><a href="https://static.googleusercontent.com/media/www.google.com/en//diversity/pdf/google_2016_certified_eeo-1_reports.pdf">EEO-1</a></td>
+          </tr>
+          <tr>
+            <th>LinkedIn</th>
+            <td><a href="https://careers.linkedin.com/diversity-and-inclusion">Website</a></td>
+            <td><a href="https://content.linkedin.com/content/dam/blog/en-us/corporate/blog/2016/10/EEO2016.jpg">EEO-1</a></td>
+          </tr>
+          <tr>
+            <th>Microsoft</th>
+            <td><a href="https://www.microsoft.com/en-us/diversity/inside-microsoft/default.aspx#epgDivFocusArea">Website</a></td>
+            <td><a href="https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE10lMY">EEO-1</a></td>
+          </tr>
+          <tr>
+            <th>Twitter</th>
+            <td><a href="https://blog.twitter.com/2017/building-a-more-inclusive-twitter-in-2016">Website</a></td>
+            <td><a href="https://www.dropbox.com/s/d9hfqh5cgbw2z0q/2016%20Consolidated%20EEO-1%20-%20I%26D.pdf?dl=0">EEO-1</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Groups Supporting Women in Tech</h2>
+      <ul>
+        <li><a href="https://girlswhocode.com/"><strong>Girls Who Code</strong></a>: After-school clubs and summer coding intensives for middle and high school girls</li>
+        <li><a href="https://www.girldevelopit.com/"><strong>Girl Develop It</strong></a>: Nonprofit offering web and software development courses for women</li>
+        <li><a href="https://www.ncwit.org/"><strong>National Center for Women &amp; Information Technology (NCWIT)</strong></a>: Nonprofit promoting women's participation in computing, from kindergarten to the workplace</li>
+        <li><a href="https://anitaborg.org/"><strong>Anita Borg Institute</strong></a>: Organization responsible for the <a href="https://ghc.anitaborg.org/">Grace Hopper Celebration of Women in Computing</a>, along with other initiatives to get women involved in computing</li>
+        <li><a href="https://www.witi.com"><strong>Women in Technology International (WITI)</strong></a>: Professional organization for women in technology</li>
+      </ul>
+    </div>
   </section>
 
-<script>
-var nav = document.querySelector('nav');
-console.log(nav);
-</script>
+  <footer>
+
+  </footer>
+
+
+<script src='js/d3.min.js'></script>
 <script src='js/drawCategory.js'></script>
 <script src='js/drawYears.js'></script>
 <script src='js/draw.js'></script>
