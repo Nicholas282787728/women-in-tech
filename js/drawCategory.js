@@ -1,4 +1,4 @@
-function plotByCategory(canvasId, groupData, options={}) {
+function plotByCategory(canvasId, groupData, options) {
 
     // Select correct category variable
     var category = 'program';
@@ -25,8 +25,8 @@ function plotByCategory(canvasId, groupData, options={}) {
 
   // Set graph options
   var defaults = {
-    'graphWidth': 600,
-    'graphHeight': 100,
+    'graphWidth': 500,
+    'graphHeight': 300,
     'marginLeft': 50,
     'marginRight': 50,
     'marginTop': 15,
