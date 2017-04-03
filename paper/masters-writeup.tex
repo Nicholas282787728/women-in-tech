@@ -15,37 +15,62 @@
 % Set spacing
 \usepackage{setspace}
   \doublespace
-\renewcommand{\arraystretch}{1.3}
+  \renewcommand{\arraystretch}{1.3}
 \usepackage{enumitem}
-  \setlist[itemize]{noitemsep}
+  \setlist{noitemsep}
 
-
+% Set bibliography style
 \usepackage{natbib}
 \usepackage{apalike}
 
-\usepackage{hyperref}
+% Set table options
 \usepackage{array}
   \newcolumntype{L}{>{\raggedright}m}
 
-\begin{document}
-\section{Introduction}
-Technology in modern society is ubiquitous, economically explosive, and culturally male. The stereotype of the young white male software developer is still the norm in information technology (IT) fields, even after decades of intervention to increase diversity in tech. According to the National Center for Women in Tech, in 2015 women made up 57\% of the U.S. workforce but held just 25\% of professional computing jobs; they likewise received more than half of all U.S. bachelor's degrees but only 17\% of degrees in computer science, down from 37\% in 1985 \citep{NCWIT2016Women}. Despite the large body of research documenting the underrepresentation of women in IT, technology has not seen the same progress toward gender parity observed in the other STEM fields. This project uses interactive visualization to present this research to a general audience, highlighting the persistent gender imbalance within IT\@.
+% Add other packages
+\usepackage{graphicx}
+  \graphicspath{ {images/} }
+\usepackage[hidelinks]{hyperref}
+  \renewcommand{\sectionautorefname}{Section}
 
-%% TODO: explicitly discuss project %%
+\begin{document}
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+Technology in modern society is ubiquitous, economically explosive, and culturally male. The stereotype of the young white male software developer is still the norm in information technology (IT) fields, even after decades of intervention to increase diversity in tech. According to the National Center for Women in Tech, in 2015 women made up 57\% of the U.S. workforce but held just 25\% of professional computing jobs; they likewise received more than half of all U.S. bachelor's degrees but only 17\% of degrees in computer science, down from 37\% in 1985 \citep{NCWIT2016Women}. Despite the large body of research documenting the underrepresentation of women in IT, technology has not seen the same progress toward gender parity observed in the other STEM fields.
+
+Researchers have proposed many explanations for the persistent gender imbalance in IT\@. Some focus on early exposure to computing, some on the importance of formal programming education, and some on hiring practices within the tech industry. The data on computer science education and technical employment support all of these interpretations, but few studies discuss more than one at a time. This project uses interactive visualization to combine these sources of data and present a holistic picture of the state of women's representation within IT\@.
 
 \input{lit-review}
 
 \section{Project Overview}
-This resource connects prior research on women's representation across IT, from high school to employment, to present an interactive visualization of the state of women in technology. It combines several publicly available datasets, spanning the education pipeline from high school to employment in computing, over the last several years, allowing viewers to explore not only the current state of gender diversity in computing but recent trends across the stages of the pipeline. Short narrative explanations provide context for each visualization, suggesting features of the dataset that viewers may want to explore.
+This resource uses short narrative frames and simple data visualizations to connect prior research on women's representation across IT\@. It combines several publicly available datasets, spanning the education pipeline from high school to employment in computing, over the last several years, allowing viewers to explore not only the current state of gender diversity in computing but recent trends across the stages of the pipeline. Short narrative explanations provide context for each visualization, suggesting features of the dataset that viewers may want to explore.
 
-%% TODO: Add section outline %%
+In the following sections, I discuss the design, construction, and evaluation of this tool. \autoref{sec:methodology} begins by describing the methodology used to design and build the visualization, including data collection (\S\ref{sec:data}), design considerations (\S\ref{sec:design}), and development of the webpage and visualizations (\S\ref{sec:development}). \autoref{sec:testing} discusses the user testing process, including changes made and future expansions inspired by user feedback. Finally, \autoref{sec:conclusion} concludes with lessons learned and a roadmap for further improvements.
 
+
+\section{Building the Project}\label{sec:methodology}
+The increasing role of technology in society means that the questions the project explores---namely, who gets to build our technologies and how effective the calls for diversity in tech have been---are relevant to the general public, not merely to those inside the tech world. Consequently, the project has three major goals:
+\begin{enumerate}
+  \item Connect prior research by presenting data on both education and employment in tech
+  \item Facilitate comparison across datasets, even for those without sophisticated analytical skills
+  \item Provide context to highlight the importance of interesting points within the data
+\end{enumerate}
+
+This section presents the data collection, design, and development processes used to accomplish these goals.
 \input{data}
 
-\input{preliminary-design}
+\input{design}
 
 \input{development}
 
+\input{testing}
+
+\input{conclusion}
+
+\clearpage
 \bibliographystyle{apalike}
 \bibliography{women-in-tech.bib}
 \end{document}

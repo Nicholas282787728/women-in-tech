@@ -1,24 +1,33 @@
-\subsection{Data Sources}\label{data}
-The data behind the visualization comes from three publicly available sources:
+\subsection{Data}\label{sec:data}
+\subsubsection{Data Sources}
+To connect earlier research and enable interested viewers to explore more thoroughly, all data used in the project is publicly available and cited in prior research and media reports.
+It comes from three sources, summarized in \autoref{tbl:data-sources}:
 %% TODO: Add citations %%
 \begin{itemize}
-  \item The College Board's AP Computer Science test taker demographics
-  \item The Taulbee Survey's annual reports of diversity in computing education
-  \item The Bureau of Labor Statistics' employment report by occupation
+  \item The College Board's AP Computer Science test taker demographics\footnote{AP Data available from \url{https://research.collegeboard.org/programs/ap/data}}
+  \item The annual Taulbee Survey report of diversity in computing education\footnote{The Taulbee Survey available from \url{http://cra.org/resources/taulbee-survey/}}
+  \item The Bureau of Labor Statistics' employment report by occupation\footnote{BLS data available from \url{https://www.bls.gov/cps/tables.htm}}
 \end{itemize}
 
-Where feasible, I collected all data going back to 2010; the Bureau of Labor Statistics changed their reporting categories in 2011, so for consistency I excluded their 2010 data. Only the College Board had released 2016 data at the time of collection. Because not all groups contain the same years' data, visualizations including multiple groups use percentage breakdowns by gender, rather than absolute comparisons.
-
 \begin{table}
-  \caption{Summary of Data Sources Used}
-  \label{tbl:data-sources}
   \begin{tabular}{L{3cm}cL{4.5cm}l} \hline
     \textbf{Data Source} & \textbf{Years Included} & \textbf{Subset} & \textbf{Variables} \\ \hline
     College Board AP Statistics & 2010--2016 & AP Computer Science Exam & Gender, Exam Score \\
     CRA's Taulbee Survey & 2010--2015 & Graduate \& Undergraduate degrees awarded & Gender, Program \\
+    United States Bureau of Labor Statistics Detailed Employment & 2011--2015 & Computing Occupations & Gender, Occupation \\ \hline
   \end{tabular}
-
+  \caption{Summary of Data Sources Used}\label{tbl:data-sources}
 \end{table}
+
+Where feasible, I collected all data going back to 2010; the Bureau of Labor Statistics changed their reporting categories in 2011, so for consistency I excluded their 2010 data. Only the College Board had released 2016 data at the time of collection. Because not all groups contain the same years' data, visualizations including multiple groups use percentage breakdowns by gender, rather than absolute numerical comparisons.
+
+The College Board's Advanced Placement (AP) program offers high school students the opportunity to earn college credit for courses taken in high school by passing standardized exams. Each AP exam covers introductory college-level material within a single subject area. The exams are scored on a 1--5 scale, with scores 3--5 considered passing and eligible for college credit. AP exam data does not include students who are exposed to computing through other means, including the after-school programs that are popular interventions to introduce girls to coding. However, it provides consistent national data on the students who receive a rigorous introduction to computer science while in high school, and it is commonly used as a proxy for computing education before college.
+
+The nonprofit Computing Research Association (CRA) conducts and publishes the Taulbee Survey, an annual report on enrollment in computing programs in higher education. It reports on the number of students and faculty in computer science, computer engineering, and information departments across the United States, and gives demographic breakdowns for each education level. Because this project focuses on the traditional tech pipeline from high school to industry employment, I use the Taulbee data on bachelor's, master's, and PhD degrees awarded and exclude data on faculty and postdoctoral positions.
+
+The United States Bureau of Labor Statistics posts detailed data by occupation in Table 11 of its Current Population Survey, broken down by gender and ethnicity. This includes a fairly granular section of ``Computing Occupations'', including specialties like database administration and web development.
+
+These three sources are ideal for comparison for several reasons. First, they all have a national scope, avoiding the sample size problems of many single-department or regional case studies. Second, they are all regularly cited in existing research on diversity in tech and are publicly available for verification. Finally, they have a similar structure, with breakdowns by gender and by occupational or educational category. This makes them easy to present consistently, while allowing supplementary data to be added in the future to explore facets specific to that stage in the pipeline.
 
 \subsubsection{Data Cleaning}
 All three data sources are available either as spreadsheets or in PDF tables. The College Board spreadsheets include demographic information for all AP tests, broken out by gender and by exam score, so I extracted the data for the Computer Science exam and discarded the others. The Bureau of Labor Statistics similarly includes all occupations in their spreadsheet, so I extracted the data for all of the ``Computer and Mathematical Occupations'' as seen in the literature. The Taulbee Survey publishes its data as part of a PDF report; because the data is already aggregated (and consequently fairly small), I manually copied the data from their PDFs into a CSV file.
