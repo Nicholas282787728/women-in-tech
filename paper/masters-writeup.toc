@@ -1,0 +1,23 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
+\contentsline {section}{\numberline {2}Prior Work}{2}{section.2}
+\contentsline {subsection}{\numberline {2.1}Women in IT}{2}{subsection.2.1}
+\contentsline {subsubsection}{\numberline {2.1.1}The Leaky Pipeline}{3}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}Problems with the Pipeline Metaphor}{4}{subsubsection.2.1.2}
+\contentsline {subsection}{\numberline {2.2}Narrative Data Visualization}{4}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Visual Narratives as Activism}{5}{subsubsection.2.2.1}
+\contentsline {section}{\numberline {3}Project Overview}{6}{section.3}
+\contentsline {section}{\numberline {4}Building the Project}{6}{section.4}
+\contentsline {subsection}{\numberline {4.1}Data}{7}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Data Sources}{7}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Data Cleaning}{8}{subsubsection.4.1.2}
+\contentsline {subsection}{\numberline {4.2}Design}{9}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Users}{9}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Tasks}{9}{subsubsection.4.2.2}
+\contentsline {subsection}{\numberline {4.3}Development}{10}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Tools}{10}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Process}{10}{subsubsection.4.3.2}
+\contentsline {section}{\numberline {5}User Testing}{11}{section.5}
+\contentsline {subsection}{\numberline {5.1}Page Structure}{14}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Navigation}{14}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Future Improvements}{15}{subsection.5.3}
+\contentsline {section}{\numberline {6}Conclusion}{15}{section.6}
