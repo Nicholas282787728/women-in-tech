@@ -1,0 +1,626 @@
+% Encoding: UTF-8
+
+@Article{KosaraMackinlay2013Storytelling,
+  author    = {Kosara, Robert and Mackinlay, Jock},
+  title     = {Storytelling: The Next Step for Visualization},
+  journal   = {Computer},
+  year      = {2013},
+  volume    = {46},
+  number    = {5},
+  pages     = {44--50},
+  month     = {May},
+  abstract  = {Presentation---specifically, its use of elements from storytelling---is the next logical step in visualization research and should be a focus of at least equal importance with exploration and analysis.},
+  doi       = {10.1109/MC.2013.36},
+  file      = {PDF from IEEE:papers\\KosaraMackinley2013.pdf:PDF},
+  keywords  = {narrative-visualization},
+  owner     = {kshaw},
+  review    = {* Storytelling makes facts memorable by connecting them contextually
+* Storytelling usually involves a sequence of chronologically ordered scenes which often do not map well to traditional modes of analytical visualization
+* Data stories can be used both to present insights and to explain their provenance
+* Data journalism employs a range of narrative structures ([[SegelHeer2010]])
+* Narrative presentations of data-derived knowledge can convey both authority ([[HullmanDiakopoulos2011]]) and memorability ([[BatemanEtAl2010]])
+* Many of the earliest visualizations were narrative: Stone's and Minard's maps, Florence Nightingale's charts
+
+## Storytelling scenarios
+* **Self-running presentations** (video or scrolling): use a teaser to generate interest
+* **Live presentations**: works well with narrated animations/annotations
+* **Small group presentations**: more audience interaction requires a more flexible presentation/demo
+
+## Research directions
+* **Storytelling approaches and their affordances**: how do we guide audiences through a story?
+* **Evaluation**: must include engagement, memorability, and persuasiveness, not just time-to-completion or response accuracy
+* **Memorability**: how do we make visualizations memorable without sacrificing clarity or comprehension?
+* **Interaction**: how do we include interaction without losing the narrative? (analogous to answering questions during a presentation: often helpful, but can distract from the key points)
+* **Annotations**: how do we include annotations and highlights that help users interpret our visualization, rather than distracting or overwhelming them?
+* **Lessons from Other Disciplines**: what can we learn from other kinds of storytellers? this is a great opportunity for collaboration
+* **Techniques Conducive to Storytelling**: what visualization types are particularly effective for storytelling? how much does that depend on a particular dataset?},
+  timestamp = {2016.12.02},
+}
+
+@Article{SegelHeer2010Narrative,
+  author    = {Segel, Edward and Heer, Jeffrey},
+  title     = {Narrative Visualization: Telling Stories with Data},
+  journal   = {IEEE Transactions on Visualization and Computer Graphics},
+  year      = {2010},
+  volume    = {16},
+  number    = {6},
+  pages     = {1139--1148},
+  month     = {November/December},
+  abstract  = {Data visualization is regularly promoted for its ability to reveal stories within data, yet these ``data stories'' differ in important ways from traditional forms of storytelling. Storytellers, especially online journalists, have increasingly been integrating visualizations into their narratives, in some cases allowing the visualization to funciton in place of a written story. In this paper, we systematically review the design space of this emerging class of visualizations. Drawing on case studies from news media to visualization research, we identify distinct genres of narrative visualization. We characterize these design differences, together with interactivity and messaging, in terms of the balance between the narrative flow intended by the author (imposed by graphical elements and the interface) and story discovery on the part of the reader (often through interactive exploration). Our framework suggests design strategies for narrative visualization, including promising under-explored approaches to journalistic storytelling and educational media.},
+  doi       = {10.1109/tvcg.2010.179},
+  file      = {PDF from IEEE:papers\\SegelHeer2010.pdf:PDF},
+  keywords  = {narrative-visualization},
+  owner     = {kshaw},
+  review    = {* Data stories require traditional data skills, traditional storytelling skills, and a unique skillset that emerges at their intersection
+* Effective storytelling needs to consider both the properties of the graphic and the emotional and cognitive experience of the viewer. (this paper just looks at the graphical design space; read [[human factors]] things for the cognitive side.)
+
+## Related Work
+* Different media use different narrative structures: print journalism and live news broadcasts don't tell stories the same way, even within the same genre
+* Visual narratives are crafted to direct the viewer's attention. Some features are cognitively more salient, and scene designers can use gestalt principles to further affect perception. Viewers also bring in cultural backgrounds that shape their attention and interpretations, which designers have no control over.
+* Many of the transition and annotation techniques used in comics (McCloud [19]) are relevant to narrative visualizations.
+* Visualization systems are designed to process complex information, so it can be difficult to articulate a story from them. Visualization tools are increasingly including storytelling options, however, including annotations, bookmarks, and sharing.
+
+## Case Studies
+* Examples Consulted
+ 1. **Steroids or Not, the Pursuit Is On** (NYT)
+ 1. **Budget Forecasts, Compared with Reality** (NYT)
+ 1. **Afghanistan: Behind the Front Line** (Financial Times)
+ 1. **Human Development Trends** (Gapminder)
+ 1. **Minnesota Employment Explorer** (Minnesota Public Radio)
+
+* Common Features
+ * Annotations to highlight points of interest
+ * Matching content across mutliple views (e.g., by maintaining a consistent color scheme)
+ * Progress bar to facilitate orientation and navigation
+ * Multimessaging (including related information to provide context)
+ * Details-on-demand
+ * Timeline slider to view different timepoints
+ * Markers of interactivity indicating where interaction is possible
+ * Synthesis/summary presenting the key point(s) of the narrative
+ * Animated transitions between narrative frames
+ * Tacit tutorial uses annotations or animations to orient readers and guide interpretation
+ * Stimulating default view
+
+## Design Space
+* Genre (based on number of frames/scenes and ordering of visual elements)
+ * Magazine-style
+ * Annotated chart
+ * Partitioned poster
+ * Flow chart
+ * Comic strip
+ * Slideshow
+ * Video
+
+* Visual Narrative Tactics
+ * Each genre can be used for compelling stories, but are more appropriate for some audiences/narratives than others
+ * Interactivity engages the viewer and allows them to explore the areas they are most interested in, possibly at the cost of the author's intended message
+ * Additional messaging, including highlighting, annotations, or narrations, can be added to guide readers through a story
+
+* Narrative Structure Tactics
+Author-driven v. reader-driven
+ * Martini Glass Structure: tight narrative structure opening up into free exploration
+ * Checklist Structure: labeled snapshots from different portions of the narrative
+ * Interactive Slideshow: follows a traditional slideshow format, but allows interaction within each slide
+ * Drill-down Story: presents a theme and allows viewers to explore details of particular instances},
+  timestamp = {2016-12-02},
+}
+
+@Article{HullmanDiakopoulos2011Visualization,
+  author    = {Hullman, Jessica and Diakopoulos, Nicholas},
+  title     = {Visualization Rhetoric: Framing Effects in Narrative Visualization},
+  journal   = {IEEE Transactions on Visualization and Computer Graphics},
+  year      = {2011},
+  volume    = {17},
+  number    = {12},
+  pages     = {2231--2240},
+  month     = {December},
+  abstract  = {Narrative visualizations combine conventions of communicative and exploratory information visualization to convey an intended story. We demonstrate \textit{visualization rhetoric} as an analytical framework for understanding how design techniques that prioritize particular interpretations in visualizations that ``tell a story'' can significantly affect end-user interpretation. We draw a parallel between narrative visualization and evidence from framing studies in political messaging, decision-making, and literary studies. Devices for understanding the rhetorical nature of narrative information visualizations are presented, informed by the rigorous application of concepts from critical theory, semiotics, journalism, and political theory. We draw attention to how design tactics represent additions or omissions of information at various levels---the data, visual representation, textual annotations, and interactivity---and how visualizations denote and connote phenomena with reference to unstated viewing conventions and codes. Classes of rhetorical techniques identified via a systematic analysis of recent narrative visualizations are presented, and characterized according to their rhetorical contribution to the visualization. We describe how designers and researchers can benefit from the potentially positive aspects of visualization rhetoric in designing engaging, layered narrative visualizations and how our framework can shed light on how a visualization design prioritizes specific interpretations. We identify areas where future inquiry into visualization rhetoric can improve understanding of visualization interpretation.},
+  doi       = {10.1109/tvcg.2011.255},
+  file      = {PDF from IEEE:papers\\HullmanDiakoupolous2011.pdf:PDF},
+  keywords  = {narrative-visualization},
+  owner     = {kshaw},
+  review    = {# Research Questions
+* What conventions do narrative visualizations use at each editorial layer (data, visual encoding, annotation, interactivity)?
+* How do outside factors influence interpretation of a narrative visualization?
+* How do rhetorical strategies interact in constructing and interpreting narrative visualizations?
+
+# Background: Bias and Rhetoric in Communication
+* *Bias* and *frame* have similar meanings, but *framing* is neutral rather than pejorative.
+* *Rhetoric* sometimes has negative connotations, but here it refers to strategies for narrative framing 
+
+## Framing in Information Visualization
+* In an attempt to avoid introducing bias, many researchers emphasize that a visualization should be so clearly constructed that it speaks for itself
+* More recent work acknowledges that viewers are influenced by external factors anyway, and that the design choices required to make a visualization "speak for itself" also frame a viewer's interpretation
+* Explicitly framing a visualization's narrative (e.g., by annotating it) lets viewers evaluate your perspective along with the data
+
+## Framing in Opinion Formation
+* Psychologists, political scientists, and communications theorists find framing effects from even small changes in presentation
+
+## Semiotics
+* We interpret signs based on their relationship to other signs, not by mapping them directly to a stable signified concept
+
+## Narrative Visualization
+* [Segel & Heer's](SegelHeer2010) design space lets us structure not just visualizations but people's interpretations
+* Many models of narrative visualization need to be expanded to include interactivity and redundancy for narrative effect
+
+# Visualization Rhetoric Framework
+
+## Editorial Layers
+* Four layers, each of which can convey meaning:
+ 1. Data (decisions about data source, aggregation, cleaning...)
+ 1. Visual representation (decisions about visual encoding)
+ 1. Textual annotations (decisions about how, where, and whether to focus users' attention)
+ 1. Interactivity (decisions about navigation, filtering, and what details/subsets to expose)
+* Some rhetorical techniques apply better to some layers than to others
+* At each layer, designers need to decide what to include, what to omit, and what to add
+
+## Rhetoric Techniques
+* Taxonomy derived from a sample of 51 professional narrative visualizations (from, e.g., the NYT or BBC, news magazines, political outlets, and well-known independent designers)
+* Iteratively coded designs based on the techniques used in the graphic and its surrounding page context, then clustered the techniques with an affinity diagram
+* Five resulting clusters: four based on technique, one based on grounding in linguistic rhetoric
+ 1. **Information Access Rhetoric** limits the amount of information presented by omitting data provenance, intermediate conclusions, or values outside a threshold. It may instead simplify by allowing users to filter the data, or by aggregating/binning data or providing summaries.
+ 1. **Provenance Rhetoric** focuses on communicating the source of the data and insights by providing references, explaining methodological choices, and using annotations to indicate exceptions or changes. This strategy also includes ways of visually representing uncertainty and may explicitly identify the creator and their credentials.
+ 1. **Mapping Rhetoric** addresses the framing effects inherent in visually encoding data. This can obscure data (deliberately or accidentally) by adding unneccessary features like gratuitous 3D or by using less salient visual features or hard-to-interpret data structures. It also includes the use of visual metaphors, as well as visual contrast, classification, and redundantly encoding features or data points.
+ 1. **Procedural Rhetoric** direct the user's attention and guide them through a narrative or interaction. Most of these techniques serve to anchor a user's attention, for instance by providing a fixed point to facilitate comparisons, using animations to indicate relationships or changes, or supplying search suggestions to help users explore. Filtering can also serve as a procedural rhetoric strategy. 
+ 1. **Linguistic-based Rhetoric** follows traditional linguistic techniques like typographic conventions, irony (especially through rhetorical questions), analogy, and direct appeals to the user. 
+
+## Viewing Codes
+* Cultural, perceptual, and cognitive lenses that shape users' interpretations
+* Familiarity with a type of graph conditions a set of expectations about it (e.g., most viewers know that a line graph implies temporal trends)},
+  timestamp = {2016-12-02},
+}
+
+@InProceedings{KimEtAl2010Designing,
+  author    = {Kim, Tanyoung and Hong, Hwajung and Magerko, Brian},
+  title     = {Designing for Persuasion: Toward Ambient Eco-Visualization for Awareness},
+  booktitle = {Persuasive Technology: 5th International Conference, PERSUASIVE 2010, Copenhagen, Denmark, June 7-10, 2010. Proceedings},
+  year      = {2010},
+  editor    = {Ploug, Thomas and Hasle, Per and Oinas-Kukkonen, Harri},
+  pages     = {106--116},
+  address   = {Berlin, Heidelberg},
+  publisher = {Springer Berlin Heidelberg},
+  abstract  = {When people are aware of their lifestyle's ecological consequences, they are more likely to adjust their behavior to reduce their impact. Persuasive design that provides feedback to users without interfering with their primary tasks can increase the awareness of neighboring problems. As a case study of design for persuasion, we designed two ambient displays as desktop widgets. Both represent a users' computer usage time, but in different visual styles. In this paper, we present the results of a comparative study of two ambient displays. We discuss the gradual progress of persuasion supported by the ambient displays and the differences in users' perception affected by the different visualization styles. Finally, our empirical findings lead to a series of design implications for persuasive media.},
+  doi       = {10.1007/978-3-642-13226-1_12},
+  file      = {PDF from Springer:papers\\KimEtAl2010.pdf:PDF},
+  isbn      = {978-3-642-13226-1},
+  keywords  = {persuasive-visualization},
+  owner     = {kshaw},
+  review    = {* The first stage of persuasion, known as precontemplation, is characterized by a lack of awareness about a problem.
+* Ambient displays present visually pleasing information that is important but not critical, so it can be monitored consistently but not constantly
+ * Iconic displays use a visual metaphor to present information: here, an animated coral reef as a metaphor for environmental impact
+ * Indexical displays display statistics directly, using simple graphics like bar or line charts
+
+# The Experiment
+* Persuasive goal: convince users to turn off their computer when not in use
+* Participants: 52 OSX users (52% male)
+* Treatments: Coralog (iconic display of idle time), Timelog (bar chart display of idle time), control (idle time logged, but no widget)
+* Pre-survey examined computer use habits
+* Post-survey evaluated widget UX, users' awareness of energy consumption, and any changes in habits
+* Semi-structured post-interview with five participants to discuss widgets' effects on their habits and awareness
+
+# Findings
+* Real-time feedback increased awareness
+* 30% of treatment groups reported changing their behavior in response to the widget data
+* Greater engagement (measured through widget use) in iconic representation group---most reported emotional attachment, which increased motivation
+* Indexical representation group reported more awareness, but no contextual knowledge of what the usage numbers represented and little motivation to decrease idle time
+
+# Design Implications
+## Early-stage Persuasion (Awareness)
+* Focus on personal/micro-activity so users can easily understand their own habits. This also provides more immediate, relevant feedback.
+* Use non-intrusive, subtle indicators for tracking
+* Use iconic representations or other fun visuals to increase user engagement
+* Provide accurate data that reflects the user's behavior, but don't use intrusive data collection methods
+
+## Later-stage Persuasion
+* Provide personalized feedback and suggest simple behavior changes
+* Use non-intrusive indicators that can also be used to maintain a target habit
+* Leverage social media, networks, or comparisons to the average to provide encouragement and motivation},
+  timestamp = {2016-12-02},
+}
+
+@Article{MiddelweerdEtAl2014Apps,
+  author    = {Middelweerd, Anouk and Mollee, Julia S. and van der Wal, C. Natalie and Brug, Johannes and te Velde, Saskia J.},
+  title     = {Apps to Promote Physical Activity among Adults: A Review and Content Analysis},
+  journal   = {International Journal of Behavioral Nutrition and Physical Activity},
+  year      = {2014},
+  volume    = {11},
+  number    = {97},
+  pages     = {1197:1--1197:9},
+  month     = {July},
+  abstract  = {\subsection*{Background}
+
+In May 2013, the iTunes and Google Play stores contained 23,490 and 17,756 smartphone applications (apps) categorized as Health and Fitness, respectively. The quality of these apps, in terms of applying established health behavior change techniques, remains unclear.
+
+\subsection*{Methods}
+
+The study sample was identified through systematic searches in iTunes and Google Play. Search terms were based on Boolean logic and included AND combinations for physical activity, healthy lifestyle, exercise, fitness, coach, assistant, motivation, and support. Sixty-four apps were downloaded, reviewed, and rated based on the taxonomy of behavior change techniques used in the interventions. Mean and ranges were calculated for the number of observed behavior change techniques. Using nonparametric tests, we compared the number of techniques observed in free and paid apps and in iTunes and Google Play.
+
+\subsection*{Results}
+
+On average, the reviewed apps included 5 behavior change techniques (range 2--8). Techniques such as self-monitoring, providing feedback on performance, and goal-setting were used most frequently, whereas some techniques such as motivational interviewing, stress management, relapse prevention, self-talk, role models, and prompted barrier identification were not. No differences in the number of behavior change techniques between free and paid apps, or between the app stores, were found.
+
+\subsection*{Conclusions}
+
+The present study demonstrated that apps promoting physical activity applied an average of 5 out of 23 possible behavior change techniques. This number was not different for paid and free apps or between app stores. The most frequently used behavior change techniques in apps were similar to those most frequently used in other types of physical activity promotion interventions.},
+  doi       = {10.1186/s12966-014-0097-9},
+  file      = {PDF from Springer:papers\\MiddelweerdEtAl2014.pdf:PDF},
+  keywords  = {fitness-tracking-apps},
+  owner     = {kshaw},
+  review    = {* Comparison of the behavior change techniques employed by 41 iTunes fitness apps and 23 fitness apps in Google Play.
+* Average of 5 techniques employed (min. 2, max. 8)
+* Most common:
+ * Provide feedback
+ * Facilitate self-monitoring
+ * Prompt goal-setting
+ * Plan social support},
+  timestamp = {2016-12-02},
+}
+
+@Article{ZuckermanGalOz2014Deconstructing,
+  author    = {Zuckerman, Oren and Gal-Oz, Ayelet},
+  title     = {Deconstructing Gamification: Evaluating the Effectiveness of Continuous Measurement, Virtual Rewards, and Social Comparison for Promoting Physical Activity},
+  journal   = {Personal and Ubiquitous Computing},
+  year      = {2014},
+  volume    = {18},
+  number    = {7},
+  pages     = {1705--1719},
+  month     = {October},
+  abstract  = {Game design elements are often implemented in persuasive systems aimed to promote physical activity, a process called ``gamification.'' Gamification is believed to motivate users to become more active, and is commonly implemented in commercial products. However, relatively few studies rigorously evaluated the effectiveness of gamification, and they yielded contradicting findings. We set our to evaluate the effectiveness for virtual rewards and social comparison---two game elements prevalent in persuasive systems. We developed a research prototype, called ``StepByStep,'' aimed to promote routine walking. We created different versions of StepByStep, implemented as an application on Android-based mobile devices, and compared their effectiveness in two field studies. Study 1 showed that a quantified version of the application---offering continuous measurement of walking time, a daily goal, and real-time feedback on progress toward this goal---facilitated reflection on activity and significantly increased walking time over baseline level. Study 2 showed that gamified versions offering virtual rewards and social comparison were only as effective as the quantified version. Thus, we advise designers to facilitate reflection on meaningful aspects of physical activity by developing novel ubiquitous measures. Furthermore, our findings highlight the importance of systematic comparisons between quantified and gamified elements for better understanding their motivational affordances.},
+  doi       = {10.1007/s00779-014-0783-2},
+  file      = {PDF from Springer:papers\\ZuckermanGalOz2014.pdf:PDF},
+  keywords  = {gamification},
+  owner     = {kshaw},
+  timestamp = {2016-12-02},
+}
+
+@Article{LeeEtAl2015More,
+  author    = {Lee, Bongshin and Riche, Nathalie Henry and Isenberg, Petra and Carpendale, Sheelagh},
+  title     = {More Than Telling a Story: Transforming Data into Visually Shared Stories},
+  journal   = {IEEE Computer Graphics and Applications},
+  year      = {2015},
+  volume    = {35},
+  number    = {5},
+  pages     = {84--90},
+  month     = {September/October},
+  abstract  = {Visualizations are increasingly used ``in the wild'' to tell compelling stories supported by data. Examples include Hans Rosling's talks on human development trends using Gapminder and the use of visualizations on the Web, including news media such as the New York Times and the Guardian. Given the practical power visualizations can have in communicating facts and opinions, the visualization research community has begun to pay more attention to the need for and use of visualization as a storytelling medium to tell compelling data stories.
+
+In this article, we take a closer look at how the visualization community has discussed visual storytelling. We argue that so far the community has been using the term ``storytelling'' in a broad way, without a clear consensus or discussion on what a visual data story encompasses. Yet, despite this wide view on what constitutes a data story, visualization research has mainly centered on how data visualization components contribute to communication. Instead, we argue for first narrowing the scope of what visual data stories encompass and then expanding our research focus to the whole process of transforming data into visually shared stories, including formative processes such as crafting narrative structures.},
+  doi       = {10.1109/MCG.2015.99},
+  file      = {PDF from IEEE:papers\\LeeEtAl2015.pdf:PDF},
+  keywords  = {narrative-visualization},
+  owner     = {kshaw},
+  review    = {* All visualizations involve presenting data to a viewer, so this isn't a sufficient definition for a data story
+* Visualizations have design elements that form a story and presentation methods used to tell it:
+ * Visual data stories contain sets of story pieces: facts backed by data
+ * Story pieces are visualized to support the author's message, including annotations or narrations
+ * Story pieces are ordered or connected meaningfully to guide viewers through the author's message
+
+# Visual Data Storytelling Process
+* Figure 2!
+* Three main phases:
+ 1. Exploring Data: exploratory analysis, including analytical visualizations, that result in a curated collection of data excerpts
+ 1. Making a Story: assembling the excerpts into a compelling storyline by ordering them, mapping out connections, developing the flow, formulating a message, and creating the denouement. This creates a plotline that clearly connects each piece and suggests their meaning in some larger context.
+ 1. Telling a Story: turning the plot and story pieces into a presentable story by developing appropriate visual representations, interactions, animations, annotations, and narrations. It becomes a shared story once it has been presented to someone else. In practice, the building stage of storytelling often occurs alongside making the story.
+
+## Roles 
+* Data Analyst: exploration and analysis
+* Scripter: builds story plot
+* Editor: prepares story material
+* Presenter: delivers the story to others
+* Audience: experiences story and provides feedback
+
+## External Factors
+* Audience: how interactive should the presentation be? how much background information does the target audience require?
+* Setting: will everyone be physically in the same place, hearing the presentation at once?
+* Medium: will the story be printed? recorded? published online?
+
+## Ethics
+
+# Research Opportunities
+* Help People Make a Compelling Story
+* Make it Easier to Tell a Story
+* One Tool for the Whole Process?
+* Beyond Evaluating a Story
+* Emerging Scenarios},
+  timestamp = {2016-12-02},
+}
+
+@Article{PandeyEtAl2014Persuasive,
+  author    = {Pandey, Anshul Vikram and Manivannan, Anjali and Nov, Oded and Satterthwaite, Margaret and Bertini, Enrico},
+  title     = {The Persuasive Power of Data Visualization},
+  journal   = {IEEE Transactions on Visualization and Computer Graphics},
+  year      = {2014},
+  volume    = {20},
+  number    = {12},
+  pages     = {2211--2220},
+  month     = {December},
+  abstract  = {Data visualization has been used extensively to inform users. However, little research has been done to examine the effects of data visualization in influencing users or in making a message more persuasive. In this study, we present experimental research to fill this gap and present an evidence-based analysis of persuasive visualization. We built on persuasion research from psychology and user interfaces literature in order to explore the persuasive effects of visualization. In this experimental study we define the circumstances under which data visualization can make a message more persuasive, propose hypotheses, and perform quantitative and qualitative analyses on studies conducted to test these hypotheses. We compare visual treatments with data presented through barcharts and linecharts on the one hand, treatments with data presented through tables on the other, and then evaluate their persuasiveness. The findings represent a first step in exploring the effectiveness of persuasive visualization.},
+  doi       = {10.1109/TVCG.2014.2346419},
+  file      = {PDF from IEEE:papers/PandeyEtAl2014.pdf:PDF},
+  keywords  = {persuasive-visualization},
+  owner     = {kshaw},
+  timestamp = {2016-12-02},
+}
+
+@Book{DearData,
+  title     = {Dear Data},
+  publisher = {Princeton Architectural Press},
+  year      = {2016},
+  author    = {Lupi, Giorgia and Posavec, Stefanie},
+  address   = {Princeton, NJ},
+  comment   = {ISBN: 9781616895327},
+  keywords  = {narrative-visualization},
+  owner     = {kshaw},
+  timestamp = {2016-12-02},
+  url       = {http://www.dear-data.com/},
+}
+
+@Book{Johnson2006Ghost,
+  title     = {The Ghost Map: The Story of London's Most Terrifying Epidemic, and How it Changed Science, Cities, and the Modern World},
+  publisher = {Riverhead Books},
+  year      = {2006},
+  author    = {Johnson, Steven},
+  address   = {New York},
+  doi       = {10.1097/jom.0b013e3181578d88},
+}
+
+@Misc{MichiganPublicRadio2016MAP,
+  author       = {{Michigan Public Radio}},
+  title        = {MAP: Take a Closer Look at Flint Lead Testing Results},
+  howpublished = {Web},
+  month        = {February},
+  year         = {2016},
+  note         = {Accessed December 1, 2016},
+  url          = {http://michiganradio.org/post/map-take-closer-look-flint-lead-testing-results#stream/0},
+}
+
+@InCollection{BarkerAspray2006State,
+  author    = {Barker, Lecia J. and Aspray, William},
+  title     = {The State of Research on Girls and IT},
+  booktitle = {Women and Information Technology},
+  publisher = {MIT Press},
+  year      = {2006},
+  editor    = {Cohoon, J. McGrath and Aspray, William},
+  chapter   = {1},
+  pages     = {3--54},
+  address   = {Cambridge, MA},
+  doi       = {10.7551/mitpress/9780262033459.003.0001},
+}
+
+@InCollection{BarkerEtAl2006Recruiting,
+  author    = {Barker, Lecia J. and Snow, Eric and Garvin-Doxas, Kathy and Weston, Tim},
+  title     = {Recruiting Middle School Girls into IT: Data on Girls' Perceptions and Experiences from a Mixed-Demographic Group},
+  booktitle = {Women and Information Technology},
+  publisher = {MIT Press},
+  year      = {2006},
+  editor    = {Cohoon, J. McGrath and Aspray, William},
+  chapter   = {4},
+  pages     = {115--136},
+  address   = {Cambridge, MA},
+  doi       = {10.7551/mitpress/9780262033459.003.0004},
+}
+
+@InCollection{KatzEtAl2006Traversing,
+  author    = {Katz, Sandra and Aronis, John and Wilson, Christine and Allbritton, David and Soffa, Mary Lou},
+  title     = {Traversing the Undergraduate Curriculum in Computer Science: Where Do Students Stumble?},
+  booktitle = {Women and Information Technology},
+  publisher = {MIT Press},
+  year      = {2006},
+  editor    = {Cohoon, J. McGrath and Aspray, William},
+  chapter   = {12},
+  address   = {Cambridge, MA},
+  doi       = {10.7551/mitpress/9780262033459.003.0012},
+}
+
+@Article{PorterEtAl2013Success,
+  author     = {Porter, Leo and Guzdial, Mark and McDowell, Charlie and Simon, Beth},
+  title      = {Success in Introductory Programming: What Works?},
+  journal    = {Communications of the ACM},
+  year       = {2013},
+  volume     = {56},
+  number     = {8},
+  pages      = {34--36},
+  month      = aug,
+  issn       = {0001-0782},
+  acmid      = {2492020},
+  address    = {New York, NY, USA},
+  doi        = {10.1145/2492007.2492020},
+  issue_date = {August 2013},
+  numpages   = {3},
+  publisher  = {ACM},
+  url        = {http://doi.acm.org.libproxy.lib.unc.edu/10.1145/2492007.2492020},
+}
+
+@Article{WernerEtAl2005Want,
+  author  = {Werner, Linda and Hanks, Brian and McDowell, Harley and Bullock, Heather and Fernald, Julian},
+  title   = {Want to Increase Retention of Your Female Students?},
+  journal = {Computing Research News},
+  year    = {2005},
+  volume  = {17},
+  number  = {2},
+  pages   = {2},
+}
+
+@Article{FrantomEtAl2002Measure,
+  author    = {Frantom, Catherine G and Green, Kathy E and Hoffman, Eleanor R},
+  title     = {Measure Development: The Children's Attitudes Toward Technology Scale ({CATS})},
+  journal   = {Journal of Educational Computing Research},
+  year      = {2002},
+  volume    = {26},
+  number    = {3},
+  pages     = {249--263},
+  doi       = {10.2190/dwaf-8leq-74tn-bl37},
+  publisher = {SAGE Publications},
+}
+
+@Article{FitzpatrickHardman2000Mediated,
+  author    = {Fitzpatrick, Helen and Hardman, Margaret},
+  title     = {Mediated Activity in the Primary Classroom: Girls, Boys and Computers},
+  journal   = {Learning and Instruction},
+  year      = {2000},
+  volume    = {10},
+  number    = {5},
+  pages     = {431--446},
+  doi       = {10.1016/s0959-4752(00)00007-4},
+  publisher = {Elsevier},
+}
+
+@Article{JonesClarke1995Diversity,
+  author    = {Jones, Trudi and Clarke, Valerie A},
+  title     = {Diversity as a Determinant of Attitudes: A Possible Explanation of the Apparent Advantage of Single-sex Settings},
+  journal   = {Journal of Educational Computing Research},
+  year      = {1995},
+  volume    = {12},
+  number    = {1},
+  pages     = {51--64},
+  doi       = {10.2190/3hph-1e8n-xtmw-canr},
+  publisher = {SAGE Publications},
+}
+
+@InCollection{Cohoon2006Just,
+  author    = {Cohoon, J. McGrath},
+  title     = {Just Get Over It or Just Get On With It: Retaining Women in Undergraduate Computing},
+  booktitle = {Women and Information Technology},
+  publisher = {MIT Press},
+  year      = {2006},
+  editor    = {Cohoon, J. McGrath and Aspray, William},
+  chapter   = {7},
+  pages     = {205--238},
+  address   = {Cambridge, MA},
+  doi       = {10.7551/mitpress/9780262033459.003.0007},
+}
+
+@Book{MargolisFisher2002Unlocking,
+  title     = {Unlocking the Clubhouse: Women in Computing},
+  publisher = {MIT Press},
+  year      = {2002},
+  author    = {Margolis, Jane and Fisher, Allen},
+  address   = {Cambridge, MA},
+  doi       = {10.1145/792548.611896},
+}
+
+@Article{Sanders2005Gender,
+  author  = {Sanders, Jo},
+  title   = {Gender and Technology in Education: A Research Review},
+  journal = {Seattle: Center for Gender Equity},
+  year    = {2005},
+  volume  = {20},
+  pages   = {2006},
+}
+
+@InProceedings{BeyerEtAl2005Changes,
+  author       = {Beyer, Sylvia and DeKeuster, Michelle and Walter, Kathleen and Colar, Michelle and Holcomb, Christina},
+  title        = {Changes in {CS} Students' Attitudes Towards {CS} Over Time: An Examination of Gender Differences},
+  booktitle    = {ACM SIGCSE Bulletin},
+  year         = {2005},
+  volume       = {37},
+  number       = {1},
+  pages        = {392--396},
+  organization = {ACM},
+  doi          = {10.1145/1047124.1047475},
+}
+
+@Article{GlassEtAl2013Whats,
+  author    = {Glass, Jennifer L and Sassler, Sharon and Levitte, Yael and Michelmore, Katherine M},
+  title     = {What's So Special About {STEM}? A Comparison of Women's Retention in {STEM} and Professional Occupations},
+  journal   = {Social Forces},
+  year      = {2013},
+  volume    = {92},
+  number    = {2},
+  pages     = {723--756},
+  doi       = {10.1093/sf/sot092},
+  publisher = {Oxford University Press},
+}
+
+@InCollection{Aspray2016Recent,
+  author    = {Aspray, William},
+  title     = {Recent Efforts to Broaden Informal Computer Science Education},
+  booktitle = {Participation in Computing: The National Science Foundation's Expansionary Programs},
+  publisher = {Springer International Publishing},
+  year      = {2016},
+  pages     = {147--163},
+  address   = {Cham},
+  isbn      = {978-3-319-24832-5},
+  doi       = {10.1007/978-3-319-24832-5_5},
+}
+
+@InCollection{BartolAspray2006Transition,
+  author    = {Bartol, Kathryn M. and Aspray, William},
+  title     = {The Transition from the Academic World to the IT Workplace},
+  booktitle = {Women and Information Technology},
+  publisher = {MIT Press},
+  year      = {2006},
+  chapter   = {13},
+  pages     = {377--419},
+  address   = {Cambridge, MA},
+}
+
+@InProceedings{vonHellensEtAl2001Breaking,
+  author       = {Von Hellens, Liisa A and Nielsen, Sue H and Trauth, Eileen M},
+  title        = {Breaking and Entering the Male Domain. Women in the {IT} Industry},
+  booktitle    = {Proceedings of the 2001 ACM SIGCPR conference on Computer personnel research},
+  year         = {2001},
+  pages        = {116--120},
+  organization = {ACM},
+  doi          = {10.1145/371209.371535},
+}
+
+@InCollection{Jesse2006Poverty,
+  author    = {Jesse, Jolene Kay},
+  title     = {The Poverty of the Pipeline Metaphor: The {AAAS}/{CPST} Study of Nontraditional Pathwasy into {IT}/{CS} Education and the Workforce},
+  booktitle = {Women and Information Technology},
+  publisher = {MIT Press},
+  year      = {2006},
+  chapter   = {8},
+  pages     = {239--278},
+  address   = {Cambridge, MA},
+}
+
+@InCollection{Chapple2006Foot,
+  author    = {Chapple, Karen},
+  title     = {Foot in the Door, Mouse in Hand: Low-Income Women, Short-Term Job Training Programs, and IT Careers},
+  booktitle = {Women and Information Technology},
+  publisher = {MIT Press},
+  year      = {2006},
+  chapter   = {15},
+  pages     = {439--470},
+  address   = {Cambridge, MA},
+}
+
+@Misc{NCWIT2016Women,
+  author       = {{National Center for Women \& Information Technology}},
+  title        = {Women in {IT}: By the Numbers},
+  howpublished = {Online at http://www.ncwit.org/bythenumbers},
+  year         = {2016},
+  owner        = {katherine},
+  timestamp    = {2017-03-27},
+  url          = {http://www.ncwit.org/bythenumbers},
+}
+
+@Article{Camp1997Incredible,
+  author    = {Camp, Tracy},
+  title     = {The Incredible Shrinking Pipeline},
+  journal   = {Communications of the {ACM}},
+  year      = {1997},
+  volume    = {40},
+  number    = {10},
+  pages     = {103--110},
+  month     = {oct},
+  doi       = {10.1145/262793.262813},
+  owner     = {katherine},
+  publisher = {Association for Computing Machinery ({ACM})},
+  timestamp = {2017-03-27},
+}
+
+@InProceedings{Shneiderman1996Eyes,
+  author    = {B. Shneiderman},
+  title     = {The eyes have it: a task by data type taxonomy for information visualizations},
+  booktitle = {Proceedings 1996 {IEEE} Symposium on Visual Languages},
+  year      = {1996},
+  publisher = {Institute of Electrical and Electronics Engineers ({IEEE})},
+  doi       = {10.1109/vl.1996.545307},
+  owner     = {katherine},
+  timestamp = {2017-04-06},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}
